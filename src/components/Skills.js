@@ -29,7 +29,7 @@ export default function Skills() {
             >
               <div className="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-3xl">
-                  {skill.icon}
+                  {skill.svg}
                 </span>
               </div>
               <span className="font-headline font-semibold text-sm">
