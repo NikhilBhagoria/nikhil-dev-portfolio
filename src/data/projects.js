@@ -1,0 +1,32 @@
+export const projects = [
+  {
+    id: 1,
+    title: "Nexus Analytics",
+    description: "A comprehensive SaaS dashboard providing real-time financial insights and automated reporting.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCeoheh_DN__Upf09Sqvqcql1Gy-T0ARNnN-p1TZ173wi-TF19vlO1cgyqY5uhCrTDSOybrzAwBH6dcFbzD66AUmhnzfX16otQq5d0c6zR7NuGUsFRSw49G_BZY7NUmnjpmghSq5O-_YCLb7SAzLuAV1VZCixrC9nAwAiS4cHhQdi8ce2Gv8FPqLNKA8p04ar8lnB_iifSla_IYcYO7IvQ7hrc_Sg5GH6IwlkBJ40Gt6h-ALVIUhQonvrwyCXutq8yfYgD6UIQj_07Z",
+    imageAlt: "Modern analytics dashboard interface with sleek purple and blue data visualizations, clean white text, and glassmorphic elements on a dark UI",
+    tags: ["Next.js", "Stripe"],
+    demoLink: "#",
+    githubLink: "#",
+  },
+  {
+    id: 2,
+    title: "LuxeStore E-com",
+    description: "High-performance e-commerce platform with complex state management and seamless checkout.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAenS27dCXtNLGvj1j1Phw4LR04p0LFj-t_JfL9sCwI7KC0MOcu6EwjZpMfdzJ3dPNqLGkEQvzHOUYqTDXeYH5RWbqaKHiVMzo5hQSXc2mo6potkPaqicjnR4vJ0intd71Uf1NLBeGt5yDYC1ZhoOylt2VgN9IuANXHplbcNfkwgxW_pKCKJ1XeG23XsBtIWgQvT7DYsQmrxHaSTxUidcZ_yyRbUfojVCOO1KM3ZbgBJB08Qi2krXdVTZe3twQuHM0YnM8tsuy_9vM-",
+    imageAlt: "Minimalist luxury e-commerce website showing a gallery of high-end gadgets with crisp typography and professional product photography",
+    tags: ["React", "Redux"],
+    demoLink: "#",
+    githubLink: "#",
+  },
+  {
+    id: 3,
+    title: "SyncCollab",
+    description: "Real-time collaboration tool for teams with live document editing and chat functionality.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDZ_ENzQn8X3Ff93o0eP2Y9ucVv8sFHjPYPh4DR55u7lHGvfL6e78S1gDE0rtH_eEvws5ix0Y1uVP6viZ704LsNQkbAwY3AFBtQZ2BqeHuNeROkBVtL9g7seBitMgJlv7Jr0Q1Z_BqueDEYkw1b_Ab1oHfoYAu613zTptDtsY558UUWcJ4r2V-1Tt7n4RmNHCIj-z3Ifjx0WhRz0unvlF5_YSr0Zab4kwV-OZ9NqRJ5n9QrOrtCQg1UWYA3diBhm7MCpMlQ5NC3wapP",
+    imageAlt: "Collaboration software interface showing team workflow cards, avatar circles, and vibrant status indicators in a dark theme",
+    tags: ["MERN", "Socket.io"],
+    demoLink: "#",
+    githubLink: "#",
+  },
+];
