@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function CTA() {
   return (
     <section className="py-24 relative overflow-hidden">
@@ -24,9 +26,11 @@ export default function CTA() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap justify-center gap-6">
-              <button className="px-10 py-5 rounded-2xl font-headline font-bold hero-gradient text-white text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] transition-all">
-                Let's Talk Business
-              </button>
+              <Link href="/contact">
+                <button className="px-10 py-5 rounded-2xl font-headline font-bold hero-gradient text-white text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] transition-all">
+                  Let's Talk Business
+                </button>
+              </Link>
 
               <button className="px-10 py-5 rounded-2xl font-headline font-bold glass-card text-on-surface text-lg hover:bg-surface-variant/40 transition-all border border-outline-variant/30">
                 View My Journey

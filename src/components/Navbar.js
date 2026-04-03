@@ -31,7 +31,7 @@ export default function Navbar() {
             Projects
           </Link>
           <Link
-            href="#"
+            href="/contact"
             className="font-headline text-sm font-medium tracking-tight text-on-surface-variant hover:text-on-surface transition-colors"
           >
             Contact
