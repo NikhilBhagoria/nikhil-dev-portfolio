@@ -5,6 +5,8 @@
 :root {
   --background: #111318;
   --foreground: #e2e2e8;
+  /* --theme-color: #00d1ff; */
+  --tw-bg-opacity: 1;
 }
 
 @theme inline {
@@ -60,4 +62,11 @@ body {
   direction: ltr;
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
   -webkit-font-smoothing: antialiased;
+}
+
+.bg-primary-container{
+    background-color: rgb(0 209 255 / var(--tw-bg-opacity, 1));
+}
+.text-on-primary-container {
+    color: rgb(0 86 106 / var(--tw-text-opacity, 1));
 }
