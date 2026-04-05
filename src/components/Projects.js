@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { projects } from "@/data/projects";
 
 export default function Projects() {
@@ -79,10 +80,12 @@ export default function Projects() {
 
         {/* View All Projects Button */}
         <div className="mt-20 text-center">
-          <button className="px-10 py-4 glass-card text-on-surface rounded-xl font-headline font-bold text-sm hover:bg-surface-variant/40 transition-all border border-outline-variant/20 inline-flex items-center gap-3">
-            View All Projects
-            <span className="material-symbols-outlined">grid_view</span>
-          </button>
+          <Link href="/projects">
+            <button className="px-10 py-4 glass-card text-on-surface rounded-xl font-headline font-bold text-sm hover:bg-surface-variant/40 transition-all border border-outline-variant/20 inline-flex items-center gap-3">
+              View All Projects
+              <span className="material-symbols-outlined">grid_view</span>
+            </button>
+          </Link>
         </div>
       </div>
     </section>
