@@ -8,14 +8,12 @@ import NavbarWrapper from "@/components/Navbar";
 export default function Home() {
   return (
     <>
-      <NavbarWrapper />
       <main>
         <Hero />
         <Skills />
         <Projects />
         <CTA />
       </main>
-      <Footer />
     </>
   );
 }
