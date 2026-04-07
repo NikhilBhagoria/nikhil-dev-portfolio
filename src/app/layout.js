@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`dark ${plusJakartaSans.variable} ${inter.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-background text-on-surface">
