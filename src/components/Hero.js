@@ -15,14 +15,14 @@ export default function Hero() {
           </h1>
 
           <p className="font-headline text-2xl md:text-3xl text-on-surface-variant font-medium mb-4">
-            React Developer |{" "}
+            Next.JS Developer |{" "}
             <span className="gradient-text">
               MERN Stack Developer
             </span>
           </p>
 
           <p className="text-on-surface-variant text-lg max-w-xl mb-10 leading-relaxed">
-            Crafting high-performance, scalable web applications with 1.8+ years
+            Crafting high-performance, scalable web applications with 2+ years
             of engineering excellence. Bridging the gap between complex logic and
             seamless user experiences.
           </p>
@@ -75,7 +75,7 @@ export default function Hero() {
               Exp
             </p>
             <p className="font-headline font-bold text-xl text-primary">
-              1.8+ Years
+              2+ Years
             </p>
           </div>
         </div>
