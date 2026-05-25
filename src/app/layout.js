@@ -1,7 +1,8 @@
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
-import NavbarWrapper, { Navbar } from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import NavbarWrapper from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import WebVitals from "@/components/ui/WebVitals";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
       className={`dark ${plusJakartaSans.variable} ${inter.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-background text-on-surface">
+        <WebVitals />
         <NavbarWrapper/>
         <main className="flex-1">
           {children}
