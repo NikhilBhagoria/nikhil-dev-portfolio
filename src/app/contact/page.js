@@ -1,6 +1,4 @@
-import Navbar from "@/components/Navbar";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import Contact from "@/components/sections/Contact";
 
 export const metadata = {
   title: "Contact | Nikhil Bhagoria",

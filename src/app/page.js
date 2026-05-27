@@ -1,19 +1,15 @@
-import Hero from "@/components/Hero";
-import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
-import CTA from "@/components/CTA";
-import Footer from "@/components/Footer";
-import NavbarWrapper from "@/components/Navbar";
+import Hero from "@/components/sections/Hero";
+import Skills from "@/components/sections/Skills";
+import Projects from "@/components/sections/Projects";
+import CTA from "@/components/sections/CTA";
 
 export default function Home() {
   return (
-    <>
-      <main>
-        <Hero />
-        <Skills />
-        <Projects />
-        <CTA />
-      </main>
-    </>
+    <main>
+      <Hero />
+      <Skills />
+      <Projects />
+      <CTA />
+    </main>
   );
 }

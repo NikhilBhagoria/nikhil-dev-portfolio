@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { projects } from "@/data/projects";
+import Button from "@/components/ui/Button";
 
 export default function ProjectsPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -218,15 +219,37 @@ export default function ProjectsPage() {
             <p className="text-on-surface-variant text-base mb-6 max-w-2xl mx-auto">
               I'm open to discussing new projects and opportunities.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <button className="px-6 py-2.5 bg-primary text-on-primary rounded-lg font-headline font-bold text-xs hover:brightness-110 transition-all inline-flex items-center justify-center gap-2">
-                <span className="material-symbols-outlined text-sm">mail</span>
+            <div className="flex flex-wrap gap-4 justify-center items-center">
+              <Button
+                href="/contact"
+                variant="gradient"
+                size="md"
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-4">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                }
+                iconPosition="start"
+              >
                 Get in Touch
-              </button>
-              <button className="px-6 py-2.5 glass-card text-on-surface rounded-lg font-headline font-bold text-xs hover:bg-surface-variant/40 transition-all border border-outline-variant/20 inline-flex items-center justify-center gap-2">
-                <span className="material-symbols-outlined text-sm">download</span>
+              </Button>
+
+              <Button
+                href="/resume.pdf"
+                variant="secondary"
+                size="md"
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-4">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                }
+                iconPosition="start"
+              >
                 Resume
-              </button>
+              </Button>
             </div>
           </div>
         </section>
@@ -284,14 +307,38 @@ function ProjectCard({ project, index }) {
 
         {/* Action Buttons */}
         <div className="flex gap-2">
-          <button className="flex-1 bg-primary-container text-on-primary-container py-2 rounded-md text-xs font-bold font-headline flex items-center justify-center gap-1.5 hover:brightness-110 transition-all border border-primary/30">
-            <span className="material-symbols-outlined text-sm">rocket_launch</span>
+          <Button
+            href={project.liveUrl || "#"}
+            variant="primary"
+            size="sm"
+            className="flex-1"
+            icon={
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
+                <path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5L16.5 6.5c.75-.75.75-2 0-2.75s-2-.75-2.75 0z"></path>
+                <path d="m12 8 4 4"></path>
+                <path d="m9 11 4 4"></path>
+              </svg>
+            }
+            iconPosition="start"
+          >
             Demo
-          </button>
-          <button className="flex-1 glass-card text-on-surface py-2 rounded-md text-xs font-bold font-headline flex items-center justify-center gap-1.5 hover:bg-surface-container-high transition-all border border-outline-variant/30">
-            <span className="material-symbols-outlined text-sm">code</span>
+          </Button>
+
+          <Button
+            href={project.githubUrl || "#"}
+            variant="secondary"
+            size="sm"
+            className="flex-1"
+            icon={
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            }
+            iconPosition="start"
+          >
             GitHub
-          </button>
+          </Button>
         </div>
       </div>
     </div>
@@ -340,14 +387,38 @@ function ProjectListItem({ project, index }) {
 
         {/* Buttons */}
         <div className="md:col-span-1 flex flex-col gap-2">
-          <button className="w-full bg-primary-container text-on-primary-container py-2 rounded-md text-xs font-bold font-headline flex items-center justify-center gap-1 hover:brightness-110 transition-all border border-primary/30">
-            <span className="material-symbols-outlined text-sm">rocket_launch</span>
+          <Button
+            href={project.liveUrl || "#"}
+            variant="primary"
+            size="sm"
+            className="w-full"
+            icon={
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
+                <path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5L16.5 6.5c.75-.75.75-2 0-2.75s-2-.75-2.75 0z"></path>
+                <path d="m12 8 4 4"></path>
+                <path d="m9 11 4 4"></path>
+              </svg>
+            }
+            iconPosition="start"
+          >
             Demo
-          </button>
-          <button className="w-full glass-card text-on-surface py-2 rounded-md text-xs font-bold font-headline flex items-center justify-center gap-1 hover:bg-surface-container-high transition-all border border-outline-variant/30">
-            <span className="material-symbols-outlined text-sm">code</span>
+          </Button>
+
+          <Button
+            href={project.githubUrl || "#"}
+            variant="secondary"
+            size="sm"
+            className="w-full"
+            icon={
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            }
+            iconPosition="start"
+          >
             Code
-          </button>
+          </Button>
         </div>
       </div>
     </div>
