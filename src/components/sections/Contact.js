@@ -28,12 +28,12 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSending(true);
-    
+
     // Simulate API delay
     setTimeout(() => {
       setIsSending(false);
       setSubmitted(true);
-      
+
       setTimeout(() => {
         setFormData({ name: "", email: "", purpose: "new-project", message: "" });
         setSubmitted(false);
@@ -66,7 +66,7 @@ export default function Contact() {
               📧 DROP A LINE
             </p>
             <p className="text-on-surface text-lg font-medium">
-              hello@nikhilbhagoria.dev
+              nikhilkumar2450@gmail.com
             </p>
           </div>
 
@@ -76,7 +76,7 @@ export default function Contact() {
               📍 CURRENTLY AT
             </p>
             <p className="text-on-surface text-lg font-medium">
-              New Delhi, India
+              India
             </p>
             <p className="text-on-surface-variant text-sm mt-2">
               Available for remote world-wide
@@ -164,11 +164,10 @@ export default function Contact() {
                         purpose: option.value,
                       }))
                     }
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all border ${
-                      formData.purpose === option.value
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all border ${formData.purpose === option.value
                         ? "bg-primary-container border-primary text-primary"
                         : "border-outline-variant/30 bg-surface-container-low text-on-surface-variant hover:border-outline-variant/50 hover:text-on-surface"
-                    }`}
+                      }`}
                   >
                     {option.label}
                   </button>
