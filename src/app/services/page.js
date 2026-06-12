@@ -102,7 +102,7 @@ export default function ServicesPage() {
   // Code snippets data bank
   const codeSnippets = {
     "Shimmer Button": {
-      tech: "Framer Motion / Tailwind",
+      tech: "CSS / Tailwind",
       code: `/* Shimmer Sweep Animation CSS */
 .shimmer-effect {
   position: relative;
@@ -250,8 +250,8 @@ useEffect(() => {
     {
       title: "Shimmer Button",
       category: "Hover States",
-      tech: "Framer Motion",
-      techBadge: "Framer Motion",
+      tech: "CSS / Tailwind",
+      techBadge: "CSS / Tailwind",
       description: "A subtle light sweep across the button surface on hover to draw the eye to your CTA.",
       tag: "Hover",
       renderWidget: () => (
@@ -305,8 +305,8 @@ useEffect(() => {
     {
       title: "Card Lift",
       category: "Hover States",
-      tech: "Framer Motion",
-      techBadge: "Framer Motion",
+      tech: "JS / CSS",
+      techBadge: "JS / CSS",
       description: "Cards lift on hover with a soft elevation shadow that signals interactivity.",
       tag: "Hover",
       renderWidget: () => (
@@ -329,8 +329,8 @@ useEffect(() => {
     {
       title: "Progress Ring",
       category: "Loading",
-      tech: "GSAP",
-      techBadge: "GSAP",
+      tech: "SVG / React",
+      techBadge: "SVG / React",
       description: "An animated SVG stroke that fills as progress increases—perfect for uploads and timers.",
       tag: "Loading",
       renderWidget: () => {
@@ -370,8 +370,8 @@ useEffect(() => {
     {
       title: "Toggle Switch",
       category: "Transitions",
-      tech: "Framer Motion",
-      techBadge: "Framer Motion",
+      tech: "Tailwind / React",
+      techBadge: "Tailwind / React",
       description: "A spring-physics thumb slide with synchronized color and shadow transitions on state change.",
       tag: "Transition",
       renderWidget: () => (
@@ -438,8 +438,8 @@ useEffect(() => {
     {
       title: "Typewriter Cursor",
       category: "Loading",
-      tech: "GSAP",
-      techBadge: "GSAP",
+      tech: "React Hooks",
+      techBadge: "React Hooks",
       description: "Characters type out one-by-one with a blinking cursor—great for hero headers and storytelling.",
       tag: "Loading",
       renderWidget: () => <LiveTypewriter />
@@ -447,8 +447,8 @@ useEffect(() => {
     {
       title: "Ripple FAB",
       category: "Hover States",
-      tech: "Framer Motion",
-      techBadge: "Framer Motion",
+      tech: "CSS Animation",
+      techBadge: "CSS Animation",
       description: "Concentric rings ripple outward from the floating action button, signaling tap affordance.",
       tag: "Hover",
       renderWidget: () => (
@@ -562,10 +562,10 @@ useEffect(() => {
                   {item.title}
                 </h3>
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${
-                  item.tech === "Framer Motion" 
-                    ? "bg-[#7000ff]/10 text-[#d1bcff] border-[#7000ff]/30" 
-                    : item.tech === "GSAP"
-                    ? "bg-[#00d1ff]/10 text-[#a4e6ff] border-[#00d1ff]/30"
+                  item.tech.includes("React") || item.tech.includes("Hooks")
+                    ? "bg-[#00d1ff]/10 text-[#a4e6ff] border-[#00d1ff]/30" 
+                    : item.tech.includes("JS")
+                    ? "bg-[#7000ff]/10 text-[#d1bcff] border-[#7000ff]/30"
                     : "bg-[#ffd59c]/10 text-[#ffd59c] border-[#ffd59c]/30"
                 }`}>
                   {item.techBadge}

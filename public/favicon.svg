@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <!-- Vibrant Cyan to Purple Gradient -->
+    <linearGradient id="monogram-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d1ff" />
+      <stop offset="50%" stop-color="#3b76ff" />
+      <stop offset="100%" stop-color="#7000ff" />
+    </linearGradient>
+    
+    <!-- Neon Glow Filter -->
+    <filter id="glow-effect" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Hexagonal Tech Border -->
+  <polygon points="256,35 447,145 447,367 256,477 65,367 65,145" 
+           stroke="url(#monogram-grad)" 
+           stroke-width="12" 
+           stroke-linejoin="round"
+           filter="url(#glow-effect)"
+           opacity="0.8" />
+
+  <!-- Integrated "NB" Monogram in a single glowing path -->
+  <path d="M 148,362 L 148,150 L 308,362 L 308,150 C 358,150 358,250 308,250 C 358,250 358,362 308,362" 
+        stroke="url(#monogram-grad)" 
+        stroke-width="36" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        filter="url(#glow-effect)" />
+</svg>

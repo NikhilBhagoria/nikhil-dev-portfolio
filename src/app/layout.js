@@ -20,7 +20,7 @@ export const metadata = {
   title: "Nikhil Bhagoria | React Developer",
   description: "React Developer & MERN Stack Developer. Crafting high-performance, scalable web applications.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.svg",
   },
 };
 
