@@ -260,85 +260,163 @@ export default function ProjectsPage() {
 
 // Project Card Component
 function ProjectCard({ project, index }) {
+  const isUpcoming = project.isUpcoming;
+
   return (
     <div
-      className="group glass-card rounded-lg overflow-hidden border border-outline-variant/20 backdrop-blur-xl hover:border-primary/40 transition-all duration-500 hover:shadow-lg hover:shadow-primary/20 animate-in fade-in slide-in-from-bottom-4"
+      className={`group glass-card rounded-lg overflow-hidden border backdrop-blur-xl transition-all duration-500 hover:shadow-lg animate-in fade-in slide-in-from-bottom-4 ${
+        isUpcoming
+          ? "border-outline-variant/10 hover:border-secondary/30 flex flex-col justify-between"
+          : "border-outline-variant/20 hover:border-primary/40 hover:shadow-primary/20"
+      }`}
       style={{
         animationDelay: `${index * 100}ms`,
         animationFillMode: "both",
       }}
     >
-      {/* Project Image */}
-      <div className="aspect-video relative overflow-hidden bg-surface-container-high">
-        <img
-          alt={project.imageAlt}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          src={project.image}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent"></div>
+      <div>
+        {/* Project Image */}
+        <div className="aspect-video relative overflow-hidden bg-surface-container-high">
+          <img
+            alt={project.imageAlt}
+            className={`w-full h-full object-cover transition-transform duration-500 ${
+              isUpcoming ? "blur-[1px] opacity-80 group-hover:scale-103" : "group-hover:scale-105"
+            }`}
+            src={project.image}
+          />
+          <div className={`absolute inset-0 bg-gradient-to-t ${isUpcoming ? "from-background/90 via-background/40" : "from-background/90 via-background/20"} to-transparent`}></div>
 
-        {/* Tag Badge */}
-        <div className="absolute top-3 right-3 px-2.5 py-1 bg-tertiary/90 text-on-tertiary-fixed rounded-md text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm">
-          Featured
+          {/* Tag Badge */}
+          {isUpcoming ? (
+            <div className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 bg-surface-container-highest/90 text-secondary rounded-md text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm border border-secondary/20">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-secondary"></span>
+              </span>
+              {project.status}
+            </div>
+          ) : (
+            <div className="absolute top-3 right-3 px-2.5 py-1 bg-tertiary/90 text-on-tertiary-fixed rounded-md text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm">
+              Featured
+            </div>
+          )}
+        </div>
+
+        {/* Project Info */}
+        <div className="p-6">
+          {/* Tags */}
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {project.tags.map((tag, index) => (
+              <span
+                key={index}
+                className="px-2 py-0.5 rounded-md bg-surface-container-highest text-[9px] font-label text-on-surface-variant uppercase tracking-wider border border-outline-variant/20"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Title and Description */}
+          <h3 className={`font-headline text-lg font-bold mb-2 text-on-surface transition-colors ${
+            isUpcoming ? "group-hover:text-secondary" : "group-hover:text-primary"
+          }`}>
+            {project.title}
+          </h3>
+          <p className="text-on-surface-variant text-xs mb-4 leading-relaxed line-clamp-2">
+            {project.description}
+          </p>
         </div>
       </div>
 
-      {/* Project Info */}
-      <div className="p-6">
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-3">
-          {project.tags.map((tag, index) => (
-            <span
-              key={index}
-              className="px-2 py-0.5 rounded-md bg-surface-container-highest text-[9px] font-label text-on-surface-variant uppercase tracking-wider border border-outline-variant/20"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Title and Description */}
-        <h3 className="font-headline text-lg font-bold mb-2 text-on-surface group-hover:text-primary transition-colors">
-          {project.title}
-        </h3>
-        <p className="text-on-surface-variant text-xs mb-4 leading-relaxed line-clamp-2">
-          {project.description}
-        </p>
+      {/* Progress & Buttons Container */}
+      <div className="p-6 pt-0">
+        {isUpcoming && (
+          <div className="mb-4">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-[10px] font-semibold text-on-surface-variant">Progress</span>
+              <span className="text-[10px] font-bold text-secondary">{project.progress}%</span>
+            </div>
+            <div className="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden border border-outline-variant/10">
+              <div
+                className="bg-gradient-to-r from-secondary to-[#7000ff] h-full rounded-full transition-all duration-500"
+                style={{ width: `${project.progress}%` }}
+              ></div>
+            </div>
+          </div>
+        )}
 
         {/* Action Buttons */}
         <div className="flex gap-2">
-          <Button
-            href={project.liveUrl || "#"}
-            variant="primary"
-            size="sm"
-            className="flex-1"
-            icon={
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
-                <path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5L16.5 6.5c.75-.75.75-2 0-2.75s-2-.75-2.75 0z"></path>
-                <path d="m12 8 4 4"></path>
-                <path d="m9 11 4 4"></path>
-              </svg>
-            }
-            iconPosition="start"
-          >
-            Demo
-          </Button>
-
-          <Button
-            href={project.githubUrl || "#"}
-            variant="secondary"
-            size="sm"
-            className="flex-1"
-            icon={
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
-                <polyline points="16 18 22 12 16 6"></polyline>
-                <polyline points="8 6 2 12 8 18"></polyline>
-              </svg>
-            }
-            iconPosition="start"
-          >
-            GitHub
-          </Button>
+          {isUpcoming ? (
+            <>
+              <Button
+                href="#"
+                variant="secondary"
+                size="sm"
+                disabled={true}
+                className="flex-1 !cursor-not-allowed opacity-40 hover:bg-transparent"
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                }
+                iconPosition="start"
+              >
+                Locked
+              </Button>
+              <Button
+                href="#"
+                variant="secondary"
+                size="sm"
+                disabled={true}
+                className="flex-1 !cursor-not-allowed opacity-40 hover:bg-transparent"
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                }
+                iconPosition="start"
+              >
+                Locked
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                href={project.liveUrl || "#"}
+                variant="primary"
+                size="sm"
+                className="flex-1"
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
+                    <path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5L16.5 6.5c.75-.75.75-2 0-2.75s-2-.75-2.75 0z"></path>
+                    <path d="m12 8 4 4"></path>
+                    <path d="m9 11 4 4"></path>
+                  </svg>
+                }
+                iconPosition="start"
+              >
+                Demo
+              </Button>
+              <Button
+                href={project.githubUrl || "#"}
+                variant="secondary"
+                size="sm"
+                className="flex-1"
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                }
+                iconPosition="start"
+              >
+                GitHub
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </div>
@@ -347,9 +425,13 @@ function ProjectCard({ project, index }) {
 
 // Project List Item Component
 function ProjectListItem({ project, index }) {
+  const isUpcoming = project.isUpcoming;
+
   return (
     <div
-      className="glass-card rounded-lg overflow-hidden border border-outline-variant/20 backdrop-blur-xl hover:border-primary/40 transition-all duration-500 p-4 group animate-in fade-in slide-in-from-bottom-4"
+      className={`glass-card rounded-lg overflow-hidden border backdrop-blur-xl transition-all duration-500 p-4 group animate-in fade-in slide-in-from-bottom-4 ${
+        isUpcoming ? "border-outline-variant/10 hover:border-secondary/30" : "border-outline-variant/20 hover:border-primary/40"
+      }`}
       style={{
         animationDelay: `${index * 100}ms`,
         animationFillMode: "both",
@@ -357,18 +439,34 @@ function ProjectListItem({ project, index }) {
     >
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
         {/* Image */}
-        <div className="md:col-span-1 aspect-square rounded-lg overflow-hidden bg-surface-container-high">
+        <div className="md:col-span-1 aspect-square rounded-lg overflow-hidden bg-surface-container-high relative">
           <img
             alt={project.imageAlt}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className={`w-full h-full object-cover transition-transform duration-500 ${
+              isUpcoming ? "blur-[1px] opacity-80 group-hover:scale-103" : "group-hover:scale-105"
+            }`}
             src={project.image}
           />
+          {isUpcoming && (
+            <div className="absolute inset-0 bg-background/50 flex items-center justify-center">
+              <span className="text-[10px] font-bold text-secondary bg-surface-container-highest/90 px-2 py-0.5 rounded border border-secondary/20 uppercase tracking-wider">
+                Pipeline
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Content */}
         <div className="md:col-span-2">
-          <h3 className="font-headline text-base font-bold mb-1 text-on-surface group-hover:text-primary transition-colors">
+          <h3 className={`font-headline text-base font-bold mb-1 text-on-surface transition-colors flex items-center gap-2 ${
+            isUpcoming ? "group-hover:text-secondary" : "group-hover:text-primary"
+          }`}>
             {project.title}
+            {isUpcoming && (
+              <span className="text-[9px] font-normal text-secondary bg-secondary/10 px-1.5 py-0.5 rounded">
+                {project.status} ({project.progress}%)
+              </span>
+            )}
           </h3>
           <p className="text-on-surface-variant text-xs mb-3 leading-relaxed line-clamp-2">
             {project.description}
@@ -387,38 +485,76 @@ function ProjectListItem({ project, index }) {
 
         {/* Buttons */}
         <div className="md:col-span-1 flex flex-col gap-2">
-          <Button
-            href={project.liveUrl || "#"}
-            variant="primary"
-            size="sm"
-            className="w-full"
-            icon={
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
-                <path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5L16.5 6.5c.75-.75.75-2 0-2.75s-2-.75-2.75 0z"></path>
-                <path d="m12 8 4 4"></path>
-                <path d="m9 11 4 4"></path>
-              </svg>
-            }
-            iconPosition="start"
-          >
-            Demo
-          </Button>
-
-          <Button
-            href={project.githubUrl || "#"}
-            variant="secondary"
-            size="sm"
-            className="w-full"
-            icon={
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
-                <polyline points="16 18 22 12 16 6"></polyline>
-                <polyline points="8 6 2 12 8 18"></polyline>
-              </svg>
-            }
-            iconPosition="start"
-          >
-            Code
-          </Button>
+          {isUpcoming ? (
+            <>
+              <Button
+                href="#"
+                variant="secondary"
+                size="sm"
+                disabled={true}
+                className="w-full !cursor-not-allowed opacity-40 hover:bg-transparent"
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                }
+                iconPosition="start"
+              >
+                Locked
+              </Button>
+              <Button
+                href="#"
+                variant="secondary"
+                size="sm"
+                disabled={true}
+                className="w-full !cursor-not-allowed opacity-40 hover:bg-transparent"
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                }
+                iconPosition="start"
+              >
+                Locked
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                href={project.liveUrl || "#"}
+                variant="primary"
+                size="sm"
+                className="w-full"
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
+                    <path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5L16.5 6.5c.75-.75.75-2 0-2.75s-2-.75-2.75 0z"></path>
+                    <path d="m12 8 4 4"></path>
+                    <path d="m9 11 4 4"></path>
+                  </svg>
+                }
+                iconPosition="start"
+              >
+                Demo
+              </Button>
+              <Button
+                href={project.githubUrl || "#"}
+                variant="secondary"
+                size="sm"
+                className="w-full"
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-3.5">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                }
+                iconPosition="start"
+              >
+                Code
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </div>
