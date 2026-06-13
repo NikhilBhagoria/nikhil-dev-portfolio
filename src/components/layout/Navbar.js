@@ -33,6 +33,7 @@ export function Navbar({
               <Link
                 key={index}
                 href={link.href}
+                title={link.label}
                 className={`flex items-center gap-2 font-headline text-sm font-medium tracking-tight transition-all duration-200 border-b-2 pb-1 ${
                   isActive
                     ? "text-primary-container border-primary-container border-b-2 rounded-b"

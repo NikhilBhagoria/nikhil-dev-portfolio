@@ -56,8 +56,9 @@ export function Button({
   );
 
   if (href) {
+    const computedTitle = props.title || (typeof children === "string" ? children : undefined);
     return (
-      <Link href={href} className={classes} {...props}>
+      <Link href={href} className={classes} title={computedTitle} {...props}>
         {renderContent()}
       </Link>
     );

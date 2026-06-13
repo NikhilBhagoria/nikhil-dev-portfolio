@@ -26,6 +26,7 @@ export default function Footer() {
             href="https://github.com/NikhilBhagoria"
             target="_blank"
             rel="noopener noreferrer"
+            title="GitHub Profile"
             className="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-[#00d1ff] transition-colors duration-200 opacity-80 hover:opacity-100"
           >
             GitHub
@@ -34,20 +35,23 @@ export default function Footer() {
             href="https://linkedin.com/in/nikhilbhagoria"
             target="_blank"
             rel="noopener noreferrer"
+            title="LinkedIn Profile"
             className="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-[#00d1ff] transition-colors duration-200 opacity-80 hover:opacity-100"
           >
             LinkedIn
           </Link>
           <Link
-            href="https://twitter.com/"
+            href="https://x.com/NikhilBhagoria"
             target="_blank"
             rel="noopener noreferrer"
+            title="Twitter Profile"
             className="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-[#00d1ff] transition-colors duration-200 opacity-80 hover:opacity-100"
           >
             Twitter
           </Link>
           <Link
             href="/privacy"
+            title="Privacy Policy"
             className="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-[#00d1ff] transition-colors duration-200 opacity-80 hover:opacity-100"
           >
             Privacy
