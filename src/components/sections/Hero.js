@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Button from "@/components/ui/Button";
 
 /**
@@ -9,6 +9,13 @@ import Button from "@/components/ui/Button";
  */
 export default function Hero() {
   const [activeTech, setActiveTech] = useState("nextjs");
+  const terminalRef = useRef(null);
+
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = 0;
+    }
+  }, [activeTech]);
 
   const techSnippets = {
     nextjs: {
@@ -191,7 +198,32 @@ ProjectSchema.index({ createdAt: -1 });`,
             </div>
 
             {/* Code Block Terminal */}
-            <div className="bg-[#0b0f19] rounded-xl border border-outline-variant/10 p-4 font-mono text-[10px] sm:text-xs leading-relaxed text-[#a9b1d6] h-[220px] overflow-y-auto mb-4 select-all shadow-inner">
+            <style>{`
+              .custom-terminal-scrollbar::-webkit-scrollbar {
+                width: 6px;
+                height: 6px;
+              }
+              .custom-terminal-scrollbar::-webkit-scrollbar-track {
+                background: #0b0f19;
+                border-radius: 9999px;
+              }
+              .custom-terminal-scrollbar::-webkit-scrollbar-thumb {
+                background: #27354a;
+                border-radius: 9999px;
+                border: 1px solid #0b0f19;
+              }
+              .custom-terminal-scrollbar::-webkit-scrollbar-thumb:hover {
+                background: #3c494e;
+              }
+              .custom-terminal-scrollbar {
+                scrollbar-width: thin;
+                scrollbar-color: #27354a #0b0f19;
+              }
+            `}</style>
+            <div
+              ref={terminalRef}
+              className="bg-[#0b0f19] rounded-xl border border-outline-variant/10 p-4 font-mono text-[10px] sm:text-xs leading-relaxed text-[#a9b1d6] h-[220px] overflow-y-auto custom-terminal-scrollbar mb-4 select-all shadow-inner"
+            >
               <span className="text-on-surface-variant select-none">// Active Technology: {techSnippets[activeTech].lang}</span>
               <pre className="mt-2 whitespace-pre-wrap font-mono">
                 {techSnippets[activeTech].code}
@@ -199,7 +231,7 @@ ProjectSchema.index({ createdAt: -1 });`,
             </div>
 
             {/* Tab Selectors (Interactive Pillars) */}
-            <div className="flex gap-2 mb-4 overflow-x-auto pb-1">
+            <div className="flex gap-2 mb-4 overflow-x-auto custom-terminal-scrollbar pb-1">
               {[
                 { id: "nextjs", label: "Next.js" },
                 { id: "react", label: "React" },
