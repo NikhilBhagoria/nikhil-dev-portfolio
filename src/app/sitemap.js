@@ -1,7 +1,7 @@
 export default async function sitemap() {
   const baseUrl = "https://nikhilbhagoria.netlify.app";
 
-  const routes = ["", "/projects", "/services", "/contact"].map((route) => ({
+  const routes = ["", "/about", "/projects", "/services", "/contact"].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split("T")[0],
     changeFrequency: "monthly",
