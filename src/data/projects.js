@@ -2,10 +2,10 @@ export const projects = [
   {
     id: 1,
     title: "Blogify",
-    description: "A full-stack blogging web application that allows users to sign up, sign in, view published blogs, and publish their own blogs with a beautiful UI.",
+    description: "A secure, serverless full-stack blogging application engineered using React, TypeScript, Hono, and PostgreSQL. Integrates JWT authentication and Zod schema validation across 8+ forms/API routes. Deployed frontend on Vercel and backend on Cloudflare Workers, achieving sub-500ms response times.",
     image: "https://nikhilbhagoria.netlify.app/Blogify.webp",
     imageAlt: "Blogify blogging platform screenshot featuring published articles, user auth, and clean dark mode UI",
-    tags: ["React.js", "Tailwind CSS", "PostgreSQL", "Prisma", "Cloudflare Workers"],
+    tags: ["React.js", "TypeScript", "Hono", "PostgreSQL", "Prisma", "Cloudflare Workers"],
     liveUrl: "https://blogify-plum-psi.vercel.app/",
     githubUrl: "https://github.com/NikhilBhagoria/blogify",
     isUpcoming: false,
