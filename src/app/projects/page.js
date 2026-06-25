@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { projects } from "@/data/projects";
 import Button from "@/components/ui/Button";
+import { use3DTilt } from "@/hooks/use3DTilt";
 
 export default function ProjectsPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -97,31 +98,37 @@ export default function ProjectsPage() {
 
           {/* Tag Filters and View Toggle */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            {/* Tag Filters - Scrollable */}
-            <div className="flex gap-2 flex-1 overflow-x-auto pb-1">
-              <button
-                onClick={() => setSelectedTag(null)}
-                className={`px-3 py-1.5 rounded-lg font-label text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
-                  selectedTag === null
-                    ? "bg-primary text-on-primary"
-                    : "glass-card text-on-surface-variant hover:bg-surface-container-high"
-                }`}
-              >
-                All
-              </button>
-              {allTags.map((tag) => (
+            {/* Tag Filters - Scrollable Container with Fade Masks */}
+            <div className="relative flex-1 max-w-full overflow-hidden">
+              {/* Fade masks for horizontal scrolling indicator */}
+              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-surface to-transparent pointer-events-none z-10"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-surface to-transparent pointer-events-none z-10"></div>
+              
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none scroll-smooth px-8">
                 <button
-                  key={tag}
-                  onClick={() => setSelectedTag(tag)}
-                  className={`px-3 py-1.5 rounded-lg font-label text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
-                    selectedTag === tag
-                      ? "bg-secondary text-on-secondary"
-                      : "glass-card text-on-surface-variant hover:bg-surface-container-high"
+                  onClick={() => setSelectedTag(null)}
+                  className={`px-3.5 py-2 rounded-lg font-label text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
+                    selectedTag === null
+                      ? "bg-primary text-background shadow-[0_2px_10px_rgba(164,230,255,0.2)] scale-[1.02]"
+                      : "glass-card text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"
                   }`}
                 >
-                  {tag}
+                  All
                 </button>
-              ))}
+                {allTags.map((tag) => (
+                  <button
+                    key={tag}
+                    onClick={() => setSelectedTag(tag)}
+                    className={`px-3.5 py-2 rounded-lg font-label text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
+                      selectedTag === tag
+                        ? "bg-secondary text-background shadow-[0_2px_10px_rgba(209,188,255,0.2)] scale-[1.02]"
+                        : "glass-card text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* View Toggle */}
@@ -198,7 +205,7 @@ export default function ProjectsPage() {
                   setSearchQuery("");
                   setSelectedTag(null);
                 }}
-                className="px-5 py-2 bg-primary text-on-primary rounded-lg font-headline font-bold text-xs hover:brightness-110 transition-all"
+                className="px-5 py-2 bg-primary text-background rounded-lg font-headline font-bold text-xs hover:brightness-110 transition-all"
               >
                 Clear Filters
               </button>
@@ -261,34 +268,35 @@ export default function ProjectsPage() {
 // Project Card Component
 function ProjectCard({ project, index }) {
   const isUpcoming = project.isUpcoming;
+  const tilt = use3DTilt(5, 1.02);
 
   return (
     <div
-      className={`group glass-card rounded-lg overflow-hidden border backdrop-blur-xl transition-all duration-500 hover:shadow-lg animate-in fade-in slide-in-from-bottom-4 ${
-        isUpcoming
-          ? "border-outline-variant/10 hover:border-secondary/30 flex flex-col justify-between"
-          : "border-outline-variant/20 hover:border-primary/40 hover:shadow-primary/20"
+      {...tilt}
+      className={`group bg-[#121420] border border-[#1f2438]/50 hover:border-[#00d1ff]/40 rounded-[1.75rem] overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,209,255,0.06)] animate-in fade-in slide-in-from-bottom-4 ${
+        isUpcoming ? "flex flex-col justify-between" : ""
       }`}
       style={{
+        ...tilt.style,
         animationDelay: `${index * 100}ms`,
         animationFillMode: "both",
       }}
     >
       <div>
         {/* Project Image */}
-        <div className="aspect-video relative overflow-hidden bg-surface-container-high">
+        <div className="aspect-video relative overflow-hidden bg-[#0b0c13] rounded-t-[1.75rem]">
           <img
             alt={project.imageAlt}
-            className={`w-full h-full object-cover transition-transform duration-500 ${
+            className={`w-full h-full object-cover transition-transform duration-500 rounded-t-[1.75rem] ${
               isUpcoming ? "blur-[1px] opacity-80 group-hover:scale-103" : "group-hover:scale-105"
             }`}
             src={project.image}
           />
-          <div className={`absolute inset-0 bg-gradient-to-t ${isUpcoming ? "from-background/90 via-background/40" : "from-background/90 via-background/20"} to-transparent`}></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#121420] via-transparent to-transparent"></div>
 
           {/* Tag Badge */}
           {isUpcoming ? (
-            <div className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 bg-surface-container-highest/90 text-secondary rounded-md text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm border border-secondary/20">
+            <div className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 bg-[#1b2030]/90 text-secondary rounded-md text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm border border-secondary/20">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-secondary"></span>
@@ -303,13 +311,13 @@ function ProjectCard({ project, index }) {
         </div>
 
         {/* Project Info */}
-        <div className="p-6">
+        <div className="p-6 pb-2">
           {/* Tags */}
           <div className="flex flex-wrap gap-1.5 mb-3">
             {project.tags.map((tag, index) => (
               <span
                 key={index}
-                className="px-2 py-0.5 rounded-md bg-surface-container-highest text-[9px] font-label text-on-surface-variant uppercase tracking-wider border border-outline-variant/20"
+                className="px-2.5 py-1 rounded bg-[#1b2030]/60 border border-[#2e3752]/30 text-[9px] font-label text-[#00d1ff] uppercase tracking-wider"
               >
                 {tag}
               </span>
@@ -317,12 +325,12 @@ function ProjectCard({ project, index }) {
           </div>
 
           {/* Title and Description */}
-          <h3 className={`font-headline text-lg font-bold mb-2 text-on-surface transition-colors ${
-            isUpcoming ? "group-hover:text-secondary" : "group-hover:text-primary"
+          <h3 className={`font-headline text-lg font-bold mb-2 text-white transition-colors ${
+            isUpcoming ? "group-hover:text-secondary" : "group-hover:text-[#00d1ff]"
           }`}>
             {project.title}
           </h3>
-          <p className="text-on-surface-variant text-xs mb-4 leading-relaxed line-clamp-2">
+          <p className="text-on-surface-variant/80 text-xs mb-4 leading-relaxed line-clamp-2">
             {project.description}
           </p>
         </div>
@@ -333,10 +341,10 @@ function ProjectCard({ project, index }) {
         {isUpcoming && (
           <div className="mb-4">
             <div className="flex justify-between items-center mb-1">
-              <span className="text-[10px] font-semibold text-on-surface-variant">Progress</span>
+              <span className="text-[10px] font-semibold text-on-surface-variant/80">Progress</span>
               <span className="text-[10px] font-bold text-secondary">{project.progress}%</span>
             </div>
-            <div className="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden border border-outline-variant/10">
+            <div className="w-full bg-[#0b0c13] rounded-full h-1.5 overflow-hidden border border-[#1f2438]/40">
               <div
                 className="bg-gradient-to-r from-secondary to-[#7000ff] h-full rounded-full transition-all duration-500"
                 style={{ width: `${project.progress}%` }}
@@ -426,20 +434,21 @@ function ProjectCard({ project, index }) {
 // Project List Item Component
 function ProjectListItem({ project, index }) {
   const isUpcoming = project.isUpcoming;
+  const tilt = use3DTilt(3, 1.01);
 
   return (
     <div
-      className={`glass-card rounded-lg overflow-hidden border backdrop-blur-xl transition-all duration-500 p-4 group animate-in fade-in slide-in-from-bottom-4 ${
-        isUpcoming ? "border-outline-variant/10 hover:border-secondary/30" : "border-outline-variant/20 hover:border-primary/40"
-      }`}
+      {...tilt}
+      className={`bg-[#121420] border border-[#1f2438]/50 hover:border-[#00d1ff]/40 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,209,255,0.04)] p-4 group animate-in fade-in slide-in-from-bottom-4`}
       style={{
+        ...tilt.style,
         animationDelay: `${index * 100}ms`,
         animationFillMode: "both",
       }}
     >
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
         {/* Image */}
-        <div className="md:col-span-1 aspect-square rounded-lg overflow-hidden bg-surface-container-high relative">
+        <div className="md:col-span-1 aspect-square rounded-xl overflow-hidden bg-[#0b0c13] relative">
           <img
             alt={project.imageAlt}
             className={`w-full h-full object-cover transition-transform duration-500 ${
@@ -448,8 +457,8 @@ function ProjectListItem({ project, index }) {
             src={project.image}
           />
           {isUpcoming && (
-            <div className="absolute inset-0 bg-background/50 flex items-center justify-center">
-              <span className="text-[10px] font-bold text-secondary bg-surface-container-highest/90 px-2 py-0.5 rounded border border-secondary/20 uppercase tracking-wider">
+            <div className="absolute inset-0 bg-[#121420]/50 flex items-center justify-center">
+              <span className="text-[10px] font-bold text-secondary bg-[#1b2030]/90 px-2 py-0.5 rounded border border-secondary/20 uppercase tracking-wider">
                 Pipeline
               </span>
             </div>
@@ -458,8 +467,8 @@ function ProjectListItem({ project, index }) {
 
         {/* Content */}
         <div className="md:col-span-2">
-          <h3 className={`font-headline text-base font-bold mb-1 text-on-surface transition-colors flex items-center gap-2 ${
-            isUpcoming ? "group-hover:text-secondary" : "group-hover:text-primary"
+          <h3 className={`font-headline text-base font-bold mb-1 text-white transition-colors flex items-center gap-2 ${
+            isUpcoming ? "group-hover:text-secondary" : "group-hover:text-[#00d1ff]"
           }`}>
             {project.title}
             {isUpcoming && (
@@ -468,14 +477,14 @@ function ProjectListItem({ project, index }) {
               </span>
             )}
           </h3>
-          <p className="text-on-surface-variant text-xs mb-3 leading-relaxed line-clamp-2">
+          <p className="text-on-surface-variant/80 text-xs mb-3 leading-relaxed line-clamp-2">
             {project.description}
           </p>
           <div className="flex flex-wrap gap-1.5">
             {project.tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="px-2 py-0.5 rounded-md bg-surface-container-highest text-[9px] font-label text-on-surface-variant uppercase tracking-wider border border-outline-variant/20"
+                className="px-2 py-0.5 rounded bg-[#1b2030]/60 border border-[#2e3752]/30 text-[9px] font-label text-[#00d1ff] uppercase tracking-wider"
               >
                 {tag}
               </span>
