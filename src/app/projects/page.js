@@ -243,7 +243,8 @@ export default function ProjectsPage() {
               </Button>
 
               <Button
-                href="/resume.pdf"
+                href="/Nikhil_Bhagoria_2+_Yrs.pdf"
+                download
                 variant="secondary"
                 size="md"
                 icon={
