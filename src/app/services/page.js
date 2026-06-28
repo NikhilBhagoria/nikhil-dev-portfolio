@@ -2,6 +2,16 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import {
+  ShimmerIcon,
+  SkeletonIcon,
+  CardLiftIcon,
+  ProgressRingIcon,
+  ToggleSwitchIcon,
+  NotificationPingIcon,
+  TypewriterCursorIcon,
+  RippleFABIcon,
+} from "@/components/ui/Icons";
 
 // ----------------------------------------------------
 // Typewriter Cursor Animation Helper
@@ -254,6 +264,7 @@ useEffect(() => {
       techBadge: "CSS / Tailwind",
       description: "A subtle light sweep across the button surface on hover to draw the eye to your CTA.",
       tag: "Hover",
+      icon: <ShimmerIcon />,
       renderWidget: () => (
         <button className="shimmer-effect px-6 py-2.5 rounded-lg bg-[#00d1ff] text-[#00566a] font-bold text-sm tracking-tight scale-100 active:scale-95 transition-transform cursor-pointer relative overflow-hidden shadow-[0_4px_20px_rgba(0,209,255,0.2)]">
           <style>{`
@@ -284,6 +295,7 @@ useEffect(() => {
       techBadge: "CSS",
       description: "Animated gradient bars communicate progress while content streams in from the server.",
       tag: "Loading",
+      icon: <SkeletonIcon />,
       renderWidget: () => (
         <div className="w-48 space-y-2.5">
           <div className="h-4 w-1/3 rounded bg-gradient-to-r from-outline-variant/15 via-outline-variant/30 to-outline-variant/15 bg-[length:200%_100%] animate-shimmer" />
@@ -309,6 +321,7 @@ useEffect(() => {
       techBadge: "JS / CSS",
       description: "Cards lift on hover with a soft elevation shadow that signals interactivity.",
       tag: "Hover",
+      icon: <CardLiftIcon />,
       renderWidget: () => (
         <div
           onMouseMove={handleCardMouseMove}
@@ -333,6 +346,7 @@ useEffect(() => {
       techBadge: "SVG / React",
       description: "An animated SVG stroke that fills as progress increases—perfect for uploads and timers.",
       tag: "Loading",
+      icon: <ProgressRingIcon />,
       renderWidget: () => {
         const radius = 34;
         const circumference = 2 * Math.PI * radius; // ~213.6
@@ -374,6 +388,7 @@ useEffect(() => {
       techBadge: "Tailwind / React",
       description: "A spring-physics thumb slide with synchronized color and shadow transitions on state change.",
       tag: "Transition",
+      icon: <ToggleSwitchIcon />,
       renderWidget: () => (
         <div className="flex items-center gap-5 select-none">
           <div
@@ -398,6 +413,7 @@ useEffect(() => {
       techBadge: "CSS",
       description: "A pulsing badge that radiates outward to draw attention to new activity without being noisy.",
       tag: "Scroll",
+      icon: <NotificationPingIcon />,
       renderWidget: () => (
         <div 
           onClick={triggerBell}
@@ -442,6 +458,7 @@ useEffect(() => {
       techBadge: "React Hooks",
       description: "Characters type out one-by-one with a blinking cursor—great for hero headers and storytelling.",
       tag: "Loading",
+      icon: <TypewriterCursorIcon />,
       renderWidget: () => <LiveTypewriter />
     },
     {
@@ -451,6 +468,7 @@ useEffect(() => {
       techBadge: "CSS Animation",
       description: "Concentric rings ripple outward from the floating action button, signaling tap affordance.",
       tag: "Hover",
+      icon: <RippleFABIcon />,
       renderWidget: () => (
         <div className="relative flex items-center justify-center w-24 h-24 select-none">
           {/* Custom concentric rings */}
@@ -543,11 +561,35 @@ useEffect(() => {
           {filteredItems.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col bg-[#111318] border border-outline-variant/10 hover:border-outline-variant/35 rounded-2xl p-4 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] group"
+              className="flex flex-col bg-[#121420] border border-[#1f2438]/50 hover:border-[#00d1ff]/40 rounded-[1.75rem] p-8 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,209,255,0.06)] group"
             >
               
+              {/* Top Row: Icon Container & Tech Badge */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#1b2030]/60 border border-[#2e3752]/50 flex items-center justify-center text-[#00d1ff] group-hover:border-[#00d1ff]/40 group-hover:bg-[#1b2030] transition-colors">
+                  {item.icon}
+                </div>
+                <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full border ${
+                  item.tech.includes("React") || item.tech.includes("Hooks")
+                    ? "bg-[#00d1ff]/5 text-[#a4e6ff] border-[#00d1ff]/20" 
+                    : item.tech.includes("JS")
+                    ? "bg-[#7000ff]/5 text-[#d1bcff] border-[#7000ff]/20"
+                    : "bg-[#ffd59c]/5 text-[#ffd59c] border-[#ffd59c]/20"
+                }`}>
+                  {item.techBadge}
+                </span>
+              </div>
+
+              {/* Title & Description Info */}
+              <h3 className="text-xl font-bold text-on-surface group-hover:text-[#00d1ff] transition-colors duration-200 font-headline mb-3">
+                {item.title}
+              </h3>
+              <p className="text-sm text-on-surface-variant/80 leading-relaxed mb-6 flex-grow">
+                {item.description}
+              </p>
+
               {/* Interaction Demonstration Area */}
-              <div className="h-44 bg-[#16181c] border border-outline-variant/10 rounded-xl flex items-center justify-center relative overflow-hidden mb-4 shadow-inner">
+              <div className="h-36 bg-[#0b0c13] border border-[#1f2438]/30 rounded-2xl flex items-center justify-center relative overflow-hidden mb-6 shadow-inner">
                 {item.renderWidget()}
 
                 {/* Subtag badge inside container */}
@@ -556,31 +598,12 @@ useEffect(() => {
                 </span>
               </div>
 
-              {/* Title & Description Info */}
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-base font-bold text-on-surface group-hover:text-[#00d1ff] transition-colors duration-200 font-headline">
-                  {item.title}
-                </h3>
-                <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${
-                  item.tech.includes("React") || item.tech.includes("Hooks")
-                    ? "bg-[#00d1ff]/10 text-[#a4e6ff] border-[#00d1ff]/30" 
-                    : item.tech.includes("JS")
-                    ? "bg-[#7000ff]/10 text-[#d1bcff] border-[#7000ff]/30"
-                    : "bg-[#ffd59c]/10 text-[#ffd59c] border-[#ffd59c]/30"
-                }`}>
-                  {item.techBadge}
-                </span>
-              </div>
-              <p className="text-xs text-on-surface-variant leading-relaxed mb-4 flex-grow">
-                {item.description}
-              </p>
-
               {/* View Code Trigger */}
               <button
                 onClick={() => setSelectedCode({ title: item.title, ...codeSnippets[item.title] })}
-                className="text-xs font-bold text-[#00d1ff] flex items-center gap-1 hover:underline cursor-pointer w-fit mt-auto select-none"
+                className="text-xs font-bold text-[#00d1ff] flex items-center gap-1.5 hover:underline cursor-pointer w-fit mt-auto select-none"
               >
-                View Code <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+                View Code <span className="group-hover:translate-x-1.5 transition-transform duration-200">→</span>
               </button>
 
             </div>
