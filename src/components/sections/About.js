@@ -192,7 +192,7 @@ export default function About() {
                 My Story
               </h2>
               <p className="text-on-surface-variant/90 text-base leading-relaxed">
-                I am a passionate ReactJS Developer with hands-on experience in building modern, efficient, scalable, and user-friendly web applications. My journey in web development has been dedicated to delivering high-quality front-end solutions that prioritize performance and user experience.
+                I am a passionate Next.js and MERN Stack Developer with hands-on experience in building modern, efficient, scalable, and user-friendly web applications. From engineering advanced reporting capabilities and bulk data import/export systems to crafting smooth interactive interfaces, my journey is dedicated to delivering high-quality web solutions that prioritize performance and user experience.
               </p>
               <p className="text-on-surface-variant/90 text-base leading-relaxed">
                 Throughout my career, I've developed a strong foundation in front-end development, with expertise in React.js and its ecosystem. I specialize in building responsive user interfaces, implementing state management solutions with Redux Toolkit, and creating seamless user experiences.
