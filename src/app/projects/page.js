@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { projects } from "@/data/projects";
 import Button from "@/components/ui/Button";
 import { use3DTilt } from "@/hooks/use3DTilt";
@@ -9,6 +9,17 @@ export default function ProjectsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState(null);
   const [viewMode, setViewMode] = useState("grid"); // grid or list
+  const tagsRef = useRef(null);
+
+  const scrollTags = (direction) => {
+    if (tagsRef.current) {
+      const scrollAmount = 200;
+      tagsRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
 
   // Get all unique tags
   const allTags = useMemo(() => {
@@ -98,16 +109,28 @@ export default function ProjectsPage() {
 
           {/* Tag Filters and View Toggle */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            {/* Tag Filters - Scrollable Container with Fade Masks */}
-            <div className="relative flex-1 max-w-full overflow-hidden">
+            {/* Tag Filters - Scrollable Container with Fade Masks and Scroll Arrows */}
+            <div className="relative flex-1 max-w-full overflow-hidden flex items-center group">
+              {/* Left Scroll Button */}
+              <button
+                onClick={() => scrollTags("left")}
+                className="absolute left-1 z-20 w-8 h-8 rounded-full bg-surface-container-high/90 border border-outline-variant/30 text-on-surface flex items-center justify-center cursor-pointer shadow-md hover:bg-primary hover:text-background transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                aria-label="Scroll tags left"
+              >
+                <span className="material-symbols-outlined text-sm leading-none">arrow_back_ios_new</span>
+              </button>
+
               {/* Fade masks for horizontal scrolling indicator */}
-              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-surface to-transparent pointer-events-none z-10"></div>
-              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-surface to-transparent pointer-events-none z-10"></div>
+              <div className="absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-surface to-transparent pointer-events-none z-10"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-surface to-transparent pointer-events-none z-10"></div>
               
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none scroll-smooth px-8">
+              <div
+                ref={tagsRef}
+                className="flex gap-2 overflow-x-auto pb-2 scrollbar-none scroll-smooth px-8 w-full"
+              >
                 <button
                   onClick={() => setSelectedTag(null)}
-                  className={`px-3.5 py-2 rounded-lg font-label text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
+                  className={`px-3.5 py-2 rounded-lg font-label text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
                     selectedTag === null
                       ? "bg-primary text-background shadow-[0_2px_10px_rgba(164,230,255,0.2)] scale-[1.02]"
                       : "glass-card text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"
@@ -119,7 +142,7 @@ export default function ProjectsPage() {
                   <button
                     key={tag}
                     onClick={() => setSelectedTag(tag)}
-                    className={`px-3.5 py-2 rounded-lg font-label text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
+                    className={`px-3.5 py-2 rounded-lg font-label text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
                       selectedTag === tag
                         ? "bg-secondary text-background shadow-[0_2px_10px_rgba(209,188,255,0.2)] scale-[1.02]"
                         : "glass-card text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"
@@ -129,6 +152,15 @@ export default function ProjectsPage() {
                   </button>
                 ))}
               </div>
+
+              {/* Right Scroll Button */}
+              <button
+                onClick={() => scrollTags("right")}
+                className="absolute right-1 z-20 w-8 h-8 rounded-full bg-surface-container-high/90 border border-outline-variant/30 text-on-surface flex items-center justify-center cursor-pointer shadow-md hover:bg-primary hover:text-background transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                aria-label="Scroll tags right"
+              >
+                <span className="material-symbols-outlined text-sm leading-none">arrow_forward_ios</span>
+              </button>
             </div>
 
             {/* View Toggle */}
