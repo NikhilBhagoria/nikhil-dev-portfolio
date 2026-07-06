@@ -60,6 +60,9 @@ export default function Contact() {
 
       setFormData({ name: "", email: "", purpose: "new-project", message: "" });
       setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 8000);
     } catch (error) {
       console.error("Failed to send contact message:", error);
       setErrorMessage(
