@@ -58,7 +58,7 @@ export default function About() {
 
   const stats = [
     { value: "2+", label: "Years Experience" },
-    { value: "15+", label: "Projects Completed" },
+    { value: "10+", label: "Projects Completed" },
     { value: "20+", label: "Tech Mastered" },
     { value: "100%", label: "Client Satisfaction" },
   ];
