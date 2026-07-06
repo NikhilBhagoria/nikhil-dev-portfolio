@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { skills } from "@/data/skills";
 import { use3DTilt } from "@/hooks/use3DTilt";
 
@@ -7,6 +8,21 @@ import { use3DTilt } from "@/hooks/use3DTilt";
  * Enterprise Production-level Skills Section.
  */
 export default function Skills() {
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const categories = [
+    { id: "all", label: "All" },
+    { id: "frontend", label: "Frontend" },
+    { id: "backend", label: "Backend & DB" },
+    { id: "languages", label: "Languages" },
+    { id: "devops", label: "DevOps & Tools" },
+  ];
+
+  const filteredSkills = skills.filter((skill) => {
+    if (activeCategory === "all") return true;
+    return skill.category === activeCategory;
+  });
+
   return (
     <section className="py-24 bg-[#0c0e12] relative overflow-hidden">
       {/* Decorative Background Glow */}
@@ -14,7 +30,7 @@ export default function Skills() {
 
       <div className="max-w-7xl mx-auto px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
           <div>
             <span className="font-label text-[10px] text-primary uppercase tracking-[0.2em] block mb-2">
               Technical Arsenal
@@ -29,9 +45,26 @@ export default function Skills() {
           </p>
         </div>
 
+        {/* Category Tabs */}
+        <div className="flex flex-wrap gap-2.5 mb-12 justify-center md:justify-start">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-4 py-2 rounded-xl font-label text-xs font-bold uppercase tracking-wider transition-all border duration-300 cursor-pointer ${
+                activeCategory === cat.id
+                  ? "bg-primary border-primary text-background shadow-[0_2px_12px_rgba(164,230,255,0.25)] scale-[1.02]"
+                  : "glass-card border-[#1f2438]/50 text-on-surface-variant hover:border-[#00d1ff]/30 hover:text-on-surface"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-          {skills.map((skill) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 min-h-[120px]">
+          {filteredSkills.map((skill) => (
             <HomeSkillCard key={skill.id} skill={skill} />
           ))}
         </div>
