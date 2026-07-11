@@ -32,6 +32,7 @@ export default function PrivacyPage() {
         <div className="mb-12 border-b border-outline-variant/15 pb-8">
           <Link
             href="/"
+            prefetch={false}
             className="inline-flex items-center gap-2 text-xs md:text-sm text-on-surface-variant hover:text-[#00d1ff] transition-colors duration-200 mb-6 font-medium group"
           >
             <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -119,7 +120,7 @@ export default function PrivacyPage() {
             </h2>
             <p>
               For any questions regarding this privacy statement, feel free to submit an inquiry through our{" "}
-              <Link href="/contact" className="text-primary hover:underline font-semibold">
+              <Link href="/contact" className="text-primary hover:underline font-semibold" prefetch={false}>
                 Contact Page
               </Link>
               .

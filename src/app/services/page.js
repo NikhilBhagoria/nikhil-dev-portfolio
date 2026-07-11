@@ -628,13 +628,13 @@ useEffect(() => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 mt-8 w-full sm:w-auto">
-              <Link href="/contact" className="w-full sm:w-auto" title="Hire Me">
+              <Link href="/contact" className="w-full sm:w-auto" title="Hire Me" prefetch={false}>
                 <button className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#00d1ff] text-[#00566a] font-bold text-sm tracking-tight scale-100 hover:scale-105 active:scale-95 transition-all shadow-[0_4px_25px_rgba(0,209,255,0.3)] cursor-pointer flex items-center justify-center gap-2 select-none">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-4"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                   Hire Me
                 </button>
               </Link>
-              <Link href="/services" className="w-full sm:w-auto" title="View Services">
+              <Link href="/services" className="w-full sm:w-auto" title="View Services" prefetch={false}>
                 <button className="w-full sm:w-auto px-6 py-3 rounded-xl bg-transparent border border-outline-variant/50 hover:border-on-surface hover:bg-on-surface/5 text-on-surface font-bold text-sm tracking-tight scale-100 hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-2 select-none">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
                   View Services

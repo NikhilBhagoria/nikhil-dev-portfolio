@@ -52,6 +52,7 @@ export default function Footer() {
           <Link
             href="/privacy"
             title="Privacy Policy"
+            prefetch={false}
             className="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-[#00d1ff] transition-colors duration-200 opacity-80 hover:opacity-100"
           >
             Privacy

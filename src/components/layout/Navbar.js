@@ -36,6 +36,7 @@ export function Navbar({
                 key={index}
                 href={link.href}
                 title={link.label}
+                prefetch={false}
                 className={`flex items-center gap-2 font-headline text-sm font-medium tracking-tight transition-all duration-200 border-b-2 pb-1 ${
                   isActive
                     ? "text-primary-container border-primary-container border-b-2 rounded-b"
@@ -97,6 +98,7 @@ export function Navbar({
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
                   title={link.label}
+                  prefetch={false}
                   className={`flex items-center gap-3 font-headline text-base font-semibold tracking-tight py-2 transition-all duration-200 ${
                     isActive
                       ? "text-primary-container"

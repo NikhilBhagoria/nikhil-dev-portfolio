@@ -81,6 +81,7 @@ export default function NotFound() {
             <Link
               href="/"
               title="Home"
+              prefetch={false}
               className="group relative flex flex-col text-left p-5 bg-[#16181c] border border-outline-variant/20 hover:border-[#00d1ff]/40 rounded-xl transition-all duration-300 hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_12px_30px_rgba(0,209,255,0.08)]"
             >
               <div className="w-9 h-9 rounded-lg bg-[#00d1ff]/10 flex items-center justify-center text-[#00d1ff] mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -100,6 +101,7 @@ export default function NotFound() {
             <Link
               href="/projects"
               title="Portfolio"
+              prefetch={false}
               className="group relative flex flex-col text-left p-5 bg-[#16181c] border border-outline-variant/20 hover:border-[#00d1ff]/40 rounded-xl transition-all duration-300 hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_12px_30px_rgba(0,209,255,0.08)]"
             >
               <div className="w-9 h-9 rounded-lg bg-[#00d1ff]/10 flex items-center justify-center text-[#00d1ff] mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -119,6 +121,7 @@ export default function NotFound() {
             <Link
               href="/contact"
               title="Contact"
+              prefetch={false}
               className="group relative flex flex-col text-left p-5 bg-[#16181c] border border-outline-variant/20 hover:border-[#00d1ff]/40 rounded-xl transition-all duration-300 hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_12px_30px_rgba(0,209,255,0.08)]"
             >
               <div className="w-9 h-9 rounded-lg bg-[#00d1ff]/10 flex items-center justify-center text-[#00d1ff] mb-3 group-hover:scale-110 transition-transform duration-300">

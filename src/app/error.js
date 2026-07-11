@@ -123,6 +123,7 @@ export default function ErrorPage({ error, reset }) {
           {/* Action 2: Go Home */}
           <Link
             href="/"
+            prefetch={false}
             className="flex items-center gap-2 px-5 py-2.5 bg-[#16181c] border border-outline-variant/20 hover:border-rose-500/40 text-on-surface text-xs md:text-sm font-bold rounded-lg transition-all duration-200 shadow-md active:scale-95"
             title="Return to Home page"
           >
@@ -136,6 +137,7 @@ export default function ErrorPage({ error, reset }) {
           {/* Action 3: Contact/Report */}
           <Link
             href="/contact"
+            prefetch={false}
             className="flex items-center gap-2 px-5 py-2.5 bg-transparent text-on-surface-variant hover:text-rose-400 text-xs md:text-sm font-semibold rounded-lg transition-colors duration-200"
             title="Report the issue"
           >
