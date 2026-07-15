@@ -363,7 +363,7 @@ function ProjectCard({ project, index }) {
           }`}>
             {project.title}
           </h3>
-          <p className="text-on-surface-variant/80 text-xs mb-4 leading-relaxed line-clamp-2">
+          <p className="text-[#bbc9cf] text-xs mb-4 leading-relaxed line-clamp-2">
             {project.description}
           </p>
         </div>
@@ -374,7 +374,7 @@ function ProjectCard({ project, index }) {
         {isUpcoming && (
           <div className="mb-4">
             <div className="flex justify-between items-center mb-1">
-              <span className="text-[10px] font-semibold text-on-surface-variant/80">Progress</span>
+              <span className="text-[10px] font-semibold text-[#bbc9cf]">Progress</span>
               <span className="text-[10px] font-bold text-secondary">{project.progress}%</span>
             </div>
             <div className="w-full bg-[#0b0c13] rounded-full h-1.5 overflow-hidden border border-[#1f2438]/40">
@@ -510,7 +510,7 @@ function ProjectListItem({ project, index }) {
               </span>
             )}
           </h3>
-          <p className="text-on-surface-variant/80 text-xs mb-3 leading-relaxed line-clamp-2">
+          <p className="text-[#bbc9cf] text-xs mb-3 leading-relaxed line-clamp-2">
             {project.description}
           </p>
           <div className="flex flex-wrap gap-1.5">
