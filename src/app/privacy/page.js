@@ -130,7 +130,7 @@ export default function PrivacyPage() {
         </div>
 
         {/* Footer info */}
-        <div className="mt-8 text-center text-xs text-on-surface-variant/40">
+        <div className="mt-8 text-center text-xs text-on-surface/60">
           <p>© {new Date().getFullYear()} Nikhil Bhagoria. All rights reserved.</p>
         </div>
 
