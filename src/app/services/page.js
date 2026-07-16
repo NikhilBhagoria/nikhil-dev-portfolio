@@ -375,7 +375,7 @@ useEffect(() => {
             </svg>
             <div className="absolute flex flex-col items-center justify-center">
               <span className="text-sm font-bold text-on-surface leading-none">{progressVal}%</span>
-              <span className="text-[8px] text-on-surface-variant leading-none mt-0.5">Loaded</span>
+              <span className="text-[8px] text-[#bbc9cf] leading-none mt-0.5">Loaded</span>
             </div>
           </div>
         );
@@ -584,7 +584,7 @@ useEffect(() => {
               <h3 className="text-xl font-bold text-on-surface group-hover:text-[#00d1ff] transition-colors duration-200 font-headline mb-3">
                 {item.title}
               </h3>
-              <p className="text-sm text-on-surface-variant/80 leading-relaxed mb-6 flex-grow">
+              <p className="text-sm text-[#bbc9cf] leading-relaxed mb-6 flex-grow">
                 {item.description}
               </p>
 
@@ -593,7 +593,7 @@ useEffect(() => {
                 {item.renderWidget()}
 
                 {/* Subtag badge inside container */}
-                <span className="absolute bottom-2.5 right-2.5 text-[9px] font-black uppercase tracking-widest bg-surface-container-lowest/80 text-on-surface-variant/80 border border-outline-variant/20 px-2 py-0.5 rounded select-none">
+                <span className="absolute bottom-2.5 right-2.5 text-[9px] font-black uppercase tracking-widest bg-surface-container-lowest/80 text-[#bbc9cf] border border-outline-variant/20 px-2 py-0.5 rounded select-none">
                   {item.tag}
                 </span>
               </div>
