@@ -121,7 +121,7 @@ function FeaturedProjectCard({ project }) {
           <h3 className="font-headline text-xl font-bold mb-3 text-white group-hover:text-[#00d1ff] transition-colors">
             {project.title}
           </h3>
-          <p className="text-on-surface-variant/80 text-sm mb-6 leading-relaxed">
+          <p className="text-[#bbc9cf] text-sm mb-6 leading-relaxed">
             {project.description}
           </p>
         </div>
@@ -202,7 +202,7 @@ function UpcomingProjectCard({ project }) {
             {project.tags.map((tag, index) => (
               <span
                 key={index}
-                className="px-2.5 py-1 rounded bg-[#1b2030]/60 border border-[#2e3752]/30 text-[9px] font-label text-on-surface-variant/80 uppercase tracking-wider"
+                className="px-2.5 py-1 rounded bg-[#1b2030]/60 border border-[#2e3752]/30 text-[9px] font-label text-[#bbc9cf] uppercase tracking-wider"
               >
                 {tag}
               </span>
@@ -213,7 +213,7 @@ function UpcomingProjectCard({ project }) {
           <h4 className="font-headline text-xl font-bold mb-3 text-white group-hover:text-secondary transition-colors">
             {project.title}
           </h4>
-          <p className="text-on-surface-variant/80 text-sm mb-6 leading-relaxed">
+          <p className="text-[#bbc9cf] text-sm mb-6 leading-relaxed">
             {project.description}
           </p>
         </div>
@@ -223,7 +223,7 @@ function UpcomingProjectCard({ project }) {
       <div className="px-8 pb-8">
         <div className="mb-6">
           <div className="flex justify-between items-center mb-1.5">
-            <span className="text-xs font-semibold text-on-surface-variant/80">Development Progress</span>
+            <span className="text-xs font-semibold text-[#bbc9cf]">Development Progress</span>
             <span className="text-xs font-bold text-secondary">{project.progress}%</span>
           </div>
           <div className="w-full bg-[#0b0c13] rounded-full h-2 overflow-hidden border border-[#1f2438]/40">
