@@ -27,7 +27,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             title="GitHub Profile"
-            className="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-[#00d1ff] transition-colors duration-200 opacity-80 hover:opacity-100"
+            className="font-label text-xs uppercase tracking-widest text-[#bbc9cf] hover:text-[#00d1ff] transition-colors duration-200"
           >
             GitHub
           </Link>
@@ -36,7 +36,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             title="LinkedIn Profile"
-            className="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-[#00d1ff] transition-colors duration-200 opacity-80 hover:opacity-100"
+            className="font-label text-xs uppercase tracking-widest text-[#bbc9cf] hover:text-[#00d1ff] transition-colors duration-200"
           >
             LinkedIn
           </Link>
@@ -45,7 +45,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             title="Twitter Profile"
-            className="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-[#00d1ff] transition-colors duration-200 opacity-80 hover:opacity-100"
+            className="font-label text-xs uppercase tracking-widest text-[#bbc9cf] hover:text-[#00d1ff] transition-colors duration-200"
           >
             Twitter
           </Link>
@@ -53,7 +53,7 @@ export default function Footer() {
             href="/privacy"
             title="Privacy Policy"
             prefetch={false}
-            className="font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-[#00d1ff] transition-colors duration-200 opacity-80 hover:opacity-100"
+            className="font-label text-xs uppercase tracking-widest text-[#bbc9cf] hover:text-[#00d1ff] transition-colors duration-200"
           >
             Privacy
           </Link>
