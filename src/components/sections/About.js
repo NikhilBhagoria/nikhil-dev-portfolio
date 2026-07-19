@@ -137,11 +137,11 @@ export default function About() {
 
               <div className="space-y-4 w-full text-left">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-on-surface-variant/80">📍 LOCATION</span>
+                  <span className="text-[#bbc9cf]">📍 LOCATION</span>
                   <span className="text-white font-medium">India</span>
                 </div>
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-on-surface-variant/80">📧 EMAIL</span>
+                  <span className="text-[#bbc9cf]">📧 EMAIL</span>
                   <a
                     href="mailto:nikhilkumar2450@gmail.com"
                     className="text-[#00d1ff] hover:underline font-medium"
@@ -151,7 +151,7 @@ export default function About() {
                   </a>
                 </div>
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-on-surface-variant/80">💼 ROLE</span>
+                  <span className="text-[#bbc9cf]">💼 ROLE</span>
                   <span className="text-white font-medium">Remote Ready</span>
                 </div>
               </div>
@@ -191,10 +191,10 @@ export default function About() {
               <h2 className="text-3xl font-headline font-extrabold text-white">
                 My Story
               </h2>
-              <p className="text-on-surface-variant/90 text-base leading-relaxed">
+              <p className="text-[#bbc9cf] text-base leading-relaxed">
                 I am a passionate Next.js and MERN Stack Developer with hands-on experience in building modern, efficient, scalable, and user-friendly web applications. From engineering advanced reporting capabilities and bulk data import/export systems to crafting smooth interactive interfaces, my journey is dedicated to delivering high-quality web solutions that prioritize performance and user experience.
               </p>
-              <p className="text-on-surface-variant/90 text-base leading-relaxed">
+              <p className="text-[#bbc9cf] text-base leading-relaxed">
                 Throughout my career, I've developed a strong foundation in front-end development, with expertise in React.js and its ecosystem. I specialize in building responsive user interfaces, implementing state management solutions with Redux Toolkit, and creating seamless user experiences.
               </p>
             </div>
@@ -273,7 +273,7 @@ export default function About() {
             <h3 className="font-headline text-2xl md:text-3xl font-extrabold text-white">
               Interested in collaborating?
             </h3>
-            <p className="text-on-surface-variant/80 text-sm max-w-lg mx-auto">
+            <p className="text-[#bbc9cf] text-sm max-w-lg mx-auto">
               I am available for remote opportunities and high-impact development projects. Let's start a conversation.
             </p>
             <div className="flex justify-center pt-2">
@@ -300,7 +300,7 @@ function StatCard({ stat }) {
       <div className="text-3xl font-extrabold text-[#00d1ff] font-headline mb-1">
         {stat.value}
       </div>
-      <div className="text-xs text-on-surface-variant/80 font-medium">
+      <div className="text-xs text-[#bbc9cf] font-medium">
         {stat.label}
       </div>
     </div>
@@ -350,7 +350,7 @@ function ExperienceCard({ exp }) {
           </span>
         </div>
 
-        <ul className="space-y-3 list-disc pl-5 text-on-surface-variant/80 text-sm leading-relaxed">
+        <ul className="space-y-3 list-disc pl-5 text-[#bbc9cf] text-sm leading-relaxed">
           {exp.highlights.map((highlight, hIdx) => (
             <li key={hIdx}>{highlight}</li>
           ))}
@@ -389,7 +389,7 @@ function EducationCard({ edu }) {
           </span>
         </div>
 
-        <ul className="space-y-3 list-disc pl-5 text-on-surface-variant/80 text-sm leading-relaxed">
+        <ul className="space-y-3 list-disc pl-5 text-[#bbc9cf] text-sm leading-relaxed">
           {edu.highlights.map((highlight, hIdx) => (
             <li key={hIdx}>{highlight}</li>
           ))}
