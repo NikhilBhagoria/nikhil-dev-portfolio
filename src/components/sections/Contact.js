@@ -261,7 +261,7 @@ function ContactInfoCard({ type }) {
       <p className="text-white text-lg font-medium">
         India
       </p>
-      <p className="text-on-surface-variant/80 text-sm mt-2">
+      <p className="text-[#bbc9cf] text-sm mt-2">
         Available for remote world-wide
       </p>
     </div>
@@ -283,7 +283,7 @@ function CareerUpdateCard() {
           <h3 className="text-white text-lg font-bold mb-2">
             Career Update
           </h3>
-          <p className="text-on-surface-variant/90">
+          <p className="text-[#bbc9cf]">
             I'm currently looking for{" "}
             <span className="text-primary font-semibold">
               Senior Engineering roles
