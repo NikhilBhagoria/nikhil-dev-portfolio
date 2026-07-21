@@ -189,12 +189,12 @@ ProjectSchema.index({ createdAt: -1 });`,
                 <span className="w-3 h-3 rounded-full bg-[#ffbd2e]"></span>
                 <span className="w-3 h-3 rounded-full bg-[#27c93f]"></span>
               </div>
-              <div className="font-mono text-xs text-on-surface-variant font-bold">
+              <div className="font-mono text-xs text-on-surface font-bold">
                 nikhil-bhagoria ~ {techSnippets[activeTech].title}
               </div>
               <div className="flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
-                <span className="font-label text-[9px] uppercase tracking-wider text-[#10b981]">PROD</span>
+                <span className="font-label text-[9px] uppercase tracking-wider text-[#34d399]">PROD</span>
               </div>
             </div>
 
@@ -242,10 +242,10 @@ ProjectSchema.index({ createdAt: -1 });`,
                 <button
                   key={tech.id}
                   onClick={() => setActiveTech(tech.id)}
-                  className={`px-3 py-1.5 rounded-lg font-label text-[10px] font-bold uppercase tracking-wider transition-all whitespace-nowrap border ${
+                  className={`px-3 py-1.5 rounded-lg font-label text-[10px] font-bold uppercase tracking-wider transition-colors duration-200 whitespace-nowrap border ${
                     activeTech === tech.id
-                      ? "bg-primary-container border-primary text-primary"
-                      : "border-outline-variant/20 bg-surface-container-low text-on-surface-variant hover:border-outline-variant/40 hover:text-on-surface"
+                      ? "bg-primary-container border-primary-container text-on-primary-container shadow-[0_10px_30px_rgba(0,209,255,0.16)]"
+                      : "border-outline-variant/20 bg-surface-container-low text-[#bbc9cf] hover:border-primary-container/40 hover:bg-surface-container-high hover:text-on-surface"
                   }`}
                 >
                   {tech.label}
@@ -264,11 +264,11 @@ ProjectSchema.index({ createdAt: -1 });`,
                   <span className="absolute font-headline font-black text-xs text-white">100</span>
                 </div>
                 <div>
-                  <h4 className="font-headline font-bold text-xs text-white">Lighthouse Standard</h4>
-                  <p className="text-[9px] text-on-surface-variant">Performance metrics fully verified</p>
+                  <h3 className="font-headline font-bold text-xs text-white">Lighthouse Standard</h3>
+                  <p className="text-[9px] text-[#bbc9cf]">Performance metrics fully verified</p>
                 </div>
               </div>
-              <span className="px-2.5 py-0.5 rounded bg-[#10b981]/20 border border-[#10b981]/40 text-[#10b981] text-[9px] font-bold uppercase tracking-widest">
+              <span className="px-2.5 py-0.5 rounded bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] text-[9px] font-bold uppercase tracking-widest">
                 OPTIMIZED
               </span>
             </div>
@@ -277,12 +277,12 @@ ProjectSchema.index({ createdAt: -1 });`,
             <div className="grid grid-cols-4 gap-2 mt-4">
               {[
                 { label: "LCP Speed", val: techSnippets[activeTech].metrics.lcp, color: "text-primary" },
-                { label: "SEO standard", val: techSnippets[activeTech].metrics.seo, color: "text-[#10b981]" },
-                { label: "Performance", val: techSnippets[activeTech].metrics.performance, color: "text-[#10b981]" },
+                { label: "SEO standard", val: techSnippets[activeTech].metrics.seo, color: "text-[#34d399]" },
+                { label: "Performance", val: techSnippets[activeTech].metrics.performance, color: "text-[#34d399]" },
                 { label: "Security", val: techSnippets[activeTech].metrics.security, color: "text-tertiary" }
               ].map((spec, i) => (
                 <div key={i} className="glass-card p-2 rounded-xl border border-outline-variant/10 text-center">
-                  <p className="font-label text-[8px] text-on-surface-variant uppercase tracking-wider mb-0.5">
+                  <p className="font-label text-[8px] text-[#bbc9cf] uppercase tracking-wider mb-0.5">
                     {spec.label}
                   </p>
                   <p className={`font-headline font-bold text-xs ${spec.color}`}>
