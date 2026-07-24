@@ -41,7 +41,7 @@ export default {
         "surface": "#111318",
         "primary-fixed": "#b7eaff",
         "inverse-primary": "#00677f",
-        "on-primary-container": "#00566a",
+        "on-primary-container": "#001f28",
         "inverse-on-surface": "#2f3035",
         "on-background": "#e2e2e8",
         "tertiary-container": "#feb127",
