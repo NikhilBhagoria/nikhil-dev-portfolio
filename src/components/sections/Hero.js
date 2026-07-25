@@ -110,14 +110,14 @@ ProjectSchema.index({ createdAt: -1 });`,
             Nikhil Bhagoria
           </h1>
 
-          <p className="font-headline text-2xl md:text-3xl text-on-surface-variant font-medium mb-4">
+          <p className="font-headline text-2xl md:text-3xl text-slate-300 font-medium mb-4">
             Next.JS Developer |{" "}
             <span className="gradient-text">
               MERN Stack Developer
             </span>
           </p>
 
-          <p className="text-on-surface-variant text-lg max-w-xl mb-10 leading-relaxed">
+          <p className="text-slate-200 text-lg max-w-xl mb-10 leading-relaxed">
             Crafting high-performance, scalable web applications with 2+ years
             of engineering excellence. Bridging the gap between complex logic and
             seamless user experiences.
@@ -189,12 +189,12 @@ ProjectSchema.index({ createdAt: -1 });`,
                 <span className="w-3 h-3 rounded-full bg-[#ffbd2e]"></span>
                 <span className="w-3 h-3 rounded-full bg-[#27c93f]"></span>
               </div>
-              <div className="font-mono text-xs text-on-surface font-bold">
+              <div className="font-mono text-xs text-white font-extrabold">
                 nikhil-bhagoria ~ {techSnippets[activeTech].title}
               </div>
-              <div className="flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
-                <span className="font-label text-[9px] uppercase tracking-wider text-[#34d399]">PROD</span>
+              <div className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
+                <span className="font-label text-xs uppercase tracking-wider text-emerald-300 font-bold">PROD</span>
               </div>
             </div>
 
@@ -223,10 +223,10 @@ ProjectSchema.index({ createdAt: -1 });`,
             `}</style>
             <div
               ref={terminalRef}
-              className="bg-[#0b0f19] rounded-xl border border-outline-variant/10 p-4 font-mono text-[10px] sm:text-xs leading-relaxed text-[#a9b1d6] h-[220px] overflow-y-auto custom-terminal-scrollbar mb-4 select-all shadow-inner"
+              className="bg-[#0b0f19] rounded-xl border border-slate-800 p-4 font-mono text-xs leading-relaxed text-slate-200 h-[220px] overflow-y-auto custom-terminal-scrollbar mb-4 select-all shadow-inner"
             >
-              <span className="text-on-surface-variant select-none">// Active Technology: {techSnippets[activeTech].lang}</span>
-              <pre className="mt-2 whitespace-pre-wrap font-mono">
+              <span className="text-slate-300 font-semibold select-none">// Active Technology: {techSnippets[activeTech].lang}</span>
+              <pre className="mt-2 whitespace-pre-wrap font-mono text-slate-100 font-medium">
                 {techSnippets[activeTech].code}
               </pre>
             </div>
@@ -242,10 +242,10 @@ ProjectSchema.index({ createdAt: -1 });`,
                 <button
                   key={tech.id}
                   onClick={() => setActiveTech(tech.id)}
-                  className={`px-3 py-1.5 rounded-lg font-label text-[10px] font-bold uppercase tracking-wider transition-colors duration-200 whitespace-nowrap border ${
+                  className={`px-3 py-1.5 rounded-lg font-label text-xs font-bold uppercase tracking-wider transition-colors duration-200 whitespace-nowrap border ${
                     activeTech === tech.id
-                      ? "bg-primary-container border-primary-container text-on-primary-container shadow-[0_10px_30px_rgba(0,209,255,0.16)]"
-                      : "border-outline-variant/20 bg-surface-container-low text-[#bbc9cf] hover:border-primary-container/40 hover:bg-surface-container-high hover:text-on-surface"
+                      ? "bg-primary-container border-primary-container text-[#001f28] shadow-[0_10px_30px_rgba(0,209,255,0.2)] font-extrabold"
+                      : "border-slate-700/60 bg-surface-container-low text-slate-200 hover:border-primary-container/40 hover:bg-surface-container-high hover:text-white"
                   }`}
                 >
                   {tech.label}
@@ -254,21 +254,21 @@ ProjectSchema.index({ createdAt: -1 });`,
             </div>
 
             {/* Google Lighthouse Optimization Scorecard */}
-            <div className="flex items-center justify-between p-4 bg-[#10b981]/5 rounded-2xl border border-[#10b981]/25">
+            <div className="flex items-center justify-between p-4 bg-[#064e3b]/30 rounded-2xl border border-[#10b981]/40">
               <div className="flex items-center gap-3">
                 <div className="relative w-12 h-12 flex items-center justify-center">
                   <svg className="w-full h-full transform -rotate-90">
-                    <circle cx="24" cy="24" r="20" className="text-surface-container-highest" strokeWidth="4" stroke="currentColor" fill="transparent" />
+                    <circle cx="24" cy="24" r="20" className="text-slate-800" strokeWidth="4" stroke="currentColor" fill="transparent" />
                     <circle cx="24" cy="24" r="20" className="text-[#10b981] drop-shadow-[0_0_8px_#10b981]" strokeWidth="4" strokeDasharray="125" strokeDashoffset="0" strokeLinecap="round" stroke="currentColor" fill="transparent" />
                   </svg>
-                  <span className="absolute font-headline font-black text-xs text-white">100</span>
+                  <span className="absolute font-headline font-black text-sm text-white">100</span>
                 </div>
                 <div>
-                  <h3 className="font-headline font-bold text-xs text-white">Lighthouse Standard</h3>
-                  <p className="text-[9px] text-[#bbc9cf]">Performance metrics fully verified</p>
+                  <h3 className="font-headline font-extrabold text-sm text-white">Lighthouse Standard</h3>
+                  <p className="text-xs text-slate-200 font-medium">Performance metrics fully verified</p>
                 </div>
               </div>
-              <span className="px-2.5 py-0.5 rounded bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] text-[9px] font-bold uppercase tracking-widest">
+              <span className="px-3 py-1 rounded-md bg-[#065f46] border border-[#10b981]/60 text-emerald-200 text-xs font-extrabold uppercase tracking-wider shadow-sm">
                 OPTIMIZED
               </span>
             </div>
@@ -276,16 +276,16 @@ ProjectSchema.index({ createdAt: -1 });`,
             {/* Specs Detail Badges */}
             <div className="grid grid-cols-4 gap-2 mt-4">
               {[
-                { label: "LCP Speed", val: techSnippets[activeTech].metrics.lcp, color: "text-primary" },
-                { label: "SEO standard", val: techSnippets[activeTech].metrics.seo, color: "text-[#34d399]" },
-                { label: "Performance", val: techSnippets[activeTech].metrics.performance, color: "text-[#34d399]" },
-                { label: "Security", val: techSnippets[activeTech].metrics.security, color: "text-tertiary" }
+                { label: "LCP Speed", val: techSnippets[activeTech].metrics.lcp, color: "text-sky-300" },
+                { label: "SEO standard", val: techSnippets[activeTech].metrics.seo, color: "text-emerald-300" },
+                { label: "Performance", val: techSnippets[activeTech].metrics.performance, color: "text-emerald-300" },
+                { label: "Security", val: techSnippets[activeTech].metrics.security, color: "text-amber-300" }
               ].map((spec, i) => (
-                <div key={i} className="glass-card p-2 rounded-xl border border-outline-variant/10 text-center">
-                  <p className="font-label text-[8px] text-[#bbc9cf] uppercase tracking-wider mb-0.5">
+                <div key={i} className="glass-card p-2.5 rounded-xl border border-slate-700/50 text-center">
+                  <p className="font-label text-[10px] text-slate-200 font-bold uppercase tracking-wider mb-1">
                     {spec.label}
                   </p>
-                  <p className={`font-headline font-bold text-xs ${spec.color}`}>
+                  <p className={`font-headline font-extrabold text-xs ${spec.color}`}>
                     {spec.val}
                   </p>
                 </div>
@@ -297,8 +297,8 @@ ProjectSchema.index({ createdAt: -1 });`,
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-        <span className="text-[10px] font-label uppercase tracking-widest">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-80">
+        <span className="text-xs font-label font-bold uppercase tracking-widest text-slate-200">
           Scroll
         </span>
         <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent"></div>
