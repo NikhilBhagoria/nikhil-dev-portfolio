@@ -375,7 +375,7 @@ useEffect(() => {
             </svg>
             <div className="absolute flex flex-col items-center justify-center">
               <span className="text-sm font-bold text-on-surface leading-none">{progressVal}%</span>
-              <span className="text-xs font-semibold text-slate-300 leading-none mt-0.5">Loaded</span>
+              <span className="text-[8px] text-[#bbc9cf] leading-none mt-0.5">Loaded</span>
             </div>
           </div>
         );
