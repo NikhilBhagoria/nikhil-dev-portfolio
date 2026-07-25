@@ -254,9 +254,9 @@ ProjectSchema.index({ createdAt: -1 });`,
             </div>
 
             {/* Google Lighthouse Optimization Scorecard */}
-            <div className="flex items-center justify-between p-4 bg-[#10b981]/5 rounded-2xl border border-[#10b981]/25">
-              <div className="flex items-center gap-3">
-                <div className="relative w-12 h-12 flex items-center justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between p-4 bg-[#10b981]/5 rounded-2xl border border-[#10b981]/25 text-center sm:text-left">
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <div className="relative w-12 h-12 flex-shrink-0 flex items-center justify-center">
                   <svg className="w-full h-full transform -rotate-90">
                     <circle cx="24" cy="24" r="20" className="text-surface-container-highest" strokeWidth="4" stroke="currentColor" fill="transparent" />
                     <circle cx="24" cy="24" r="20" className="text-[#10b981] drop-shadow-[0_0_8px_#10b981]" strokeWidth="4" strokeDasharray="125" strokeDashoffset="0" strokeLinecap="round" stroke="currentColor" fill="transparent" />
@@ -264,28 +264,28 @@ ProjectSchema.index({ createdAt: -1 });`,
                   <span className="absolute font-headline font-black text-xs text-white">100</span>
                 </div>
                 <div>
-                  <h3 className="font-headline font-bold text-xs text-white">Lighthouse Standard</h3>
-                  <p className="text-[9px] text-[#bbc9cf]">Performance metrics fully verified</p>
+                  <h3 className="font-headline font-bold text-xs sm:text-sm text-white">Lighthouse Standard</h3>
+                  <p className="text-[10px] text-[#bbc9cf] mt-0.5">Performance metrics fully verified</p>
                 </div>
               </div>
-              <span className="px-2.5 py-0.5 rounded bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] text-[9px] font-bold uppercase tracking-widest">
+              <span className="px-2.5 py-0.5 rounded bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] text-[9px] font-bold uppercase tracking-widest sm:self-center">
                 OPTIMIZED
               </span>
             </div>
 
             {/* Specs Detail Badges */}
-            <div className="grid grid-cols-4 gap-2 mt-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
               {[
                 { label: "LCP Speed", val: techSnippets[activeTech].metrics.lcp, color: "text-primary" },
                 { label: "SEO standard", val: techSnippets[activeTech].metrics.seo, color: "text-[#34d399]" },
                 { label: "Performance", val: techSnippets[activeTech].metrics.performance, color: "text-[#34d399]" },
                 { label: "Security", val: techSnippets[activeTech].metrics.security, color: "text-tertiary" }
               ].map((spec, i) => (
-                <div key={i} className="glass-card p-2 rounded-xl border border-outline-variant/10 text-center">
-                  <p className="font-label text-[8px] text-[#bbc9cf] uppercase tracking-wider mb-0.5">
+                <div key={i} className="glass-card p-3 rounded-xl border border-outline-variant/10 text-center flex flex-col justify-center min-w-0">
+                  <p className="font-label text-[10px] text-[#bbc9cf] uppercase tracking-wider mb-1 truncate">
                     {spec.label}
                   </p>
-                  <p className={`font-headline font-bold text-xs ${spec.color}`}>
+                  <p className={`font-headline font-bold text-sm sm:text-base ${spec.color}`}>
                     {spec.val}
                   </p>
                 </div>
@@ -297,7 +297,7 @@ ProjectSchema.index({ createdAt: -1 });`,
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+      <div className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2 opacity-50">
         <span className="text-[10px] font-label uppercase tracking-widest">
           Scroll
         </span>

@@ -30,16 +30,14 @@ export default function Skills() {
 
       <div className="max-w-7xl mx-auto px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-          <div>
-            <span className="font-label text-[10px] text-primary uppercase tracking-[0.2em] block mb-2">
-              Technical Arsenal
-            </span>
-            <h2 className="font-headline text-4xl font-extrabold tracking-tight text-white">
-              Core Expertise
-            </h2>
-          </div>
-          <p className="text-on-surface-variant max-w-md text-sm">
+        <div className="mb-12 max-w-xl">
+          <span className="font-label text-[10px] text-primary uppercase tracking-[0.2em] block mb-2">
+            Technical Arsenal
+          </span>
+          <h2 className="font-headline text-4xl font-extrabold tracking-tight text-white mb-3">
+            Core Expertise
+          </h2>
+          <p className="text-on-surface-variant text-sm leading-relaxed">
             Specialized in the modern web ecosystem, focusing on performance,
             maintainability, and elegant architectures.
           </p>
