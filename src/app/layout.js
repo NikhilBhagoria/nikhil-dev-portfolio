@@ -133,6 +133,16 @@ export default function RootLayout({ children }) {
       data-scroll-behavior="smooth"
       className={`dark ${plusJakartaSans.variable} ${inter.variable}`}
     >
+      <head
+        dangerouslySetInnerHTML={{
+          __html: `
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+            <noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&display=swap" rel="stylesheet"></noscript>
+          `,
+        }}
+      />
       <body className="min-h-screen flex flex-col bg-background text-on-surface">
         <script
           type="application/ld+json"
