@@ -264,7 +264,7 @@ ProjectSchema.index({ createdAt: -1 });`,
                   <span className="absolute font-headline font-black text-xs text-white">100</span>
                 </div>
                 <div>
-                  <h3 className="font-headline font-bold text-xs sm:text-sm text-white">Lighthouse Standard</h3>
+                  <p className="font-headline font-bold text-xs sm:text-sm text-white">Lighthouse Standard</p>
                   <p className="text-[10px] text-[#bbc9cf] mt-0.5">Performance metrics fully verified</p>
                 </div>
               </div>
