@@ -1,6 +1,6 @@
 # 🚀 Nikhil Bhagoria | Portfolio Website
 
-[![Repo Views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FNikhilBhagoria%2Fnikhil-dev-portfolio&count_bg=%2300d1ff&title_bg=%231b2030&icon=&icon_color=%23E7E7E7&title=Repo+Views&edge_flat=true)](https://github.com/NikhilBhagoria/nikhil-dev-portfolio)
+[![Repo Views](https://api.visitorbadge.io/api/VisitorHit?user=NikhilBhagoria&repo=nikhil-dev-portfolio&label=REPO+VIEWS&labelColor=%231b2030&countColor=%2300d1ff)](https://github.com/NikhilBhagoria/nikhil-dev-portfolio)
 
 Welcome to my personal portfolio repository! This is a modern, high-performance, and visually stunning developer portfolio designed to showcase my skills, projects, and work history.
 
