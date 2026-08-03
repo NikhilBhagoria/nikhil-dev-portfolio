@@ -6,7 +6,7 @@ Welcome to my personal portfolio repository! This is a modern, high-performance,
 
 Built using **Next.js 14+ (App Router)**, **Tailwind CSS**, and **React**, it features a sleek glassmorphic dark interface (Obsidian-inspired), interactive micro-interactions, and a custom developer console to provide visitors with an engaging, interactive experience.
 
-🔗 **Live Link:** [nikhilbhagoria.dev](https://github.com/NikhilBhagoria) *(Configure your live link here)*
+🔗 **Live Link:** [https://nikhilbhagoria.netlify.app/](https://nikhilbhagoria.netlify.app/) 
 
 ---
 
