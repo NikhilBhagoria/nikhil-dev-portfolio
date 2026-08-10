@@ -1,13 +1,12 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const BEATS = [
-  { label: 'Run a task', detail: 'one, to completion', angle: -90 },
-  { label: 'Drain microtasks', detail: 'all of them', angle: 0 },
-  { label: 'Render', detail: 'if the frame is due', angle: 90 },
-  { label: 'Wait', detail: 'for the next event', angle: 180 }
+  { label: 'Run a task', detail: 'one, to completion', angle: -90, color: 'var(--color-elp-flame)' },
+  { label: 'Drain microtasks', detail: 'all of them', angle: 0, color: 'var(--color-elp-pine)' },
+  { label: 'Render', detail: 'if the frame is due', angle: 90, color: 'var(--color-elp-iris)' },
+  { label: 'Wait', detail: 'for the next event', angle: 180, color: 'var(--color-elp-ochre)' }
 ];
 
 const RADIUS = 104;
@@ -21,6 +20,39 @@ function polar(angle, radius) {
 export function LoopDiagram() {
   return (
     <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:gap-10">
+      {/* Inject local CSS animations to guarantee 100% perfect synchronization */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes elp-rotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes elp-dot-color {
+          0%, 100% { fill: var(--color-elp-flame); }
+          25% { fill: var(--color-elp-pine); }
+          50% { fill: var(--color-elp-iris); }
+          75% { fill: var(--color-elp-ochre); }
+        }
+        @keyframes elp-step-0 {
+          0%, 100% { opacity: 1; border-color: var(--color-elp-flame); transform: translateX(4px); }
+          12.5%, 87.5% { opacity: 0.45; border-color: var(--color-elp-rule); transform: translateX(0); }
+        }
+        @keyframes elp-step-1 {
+          25% { opacity: 1; border-color: var(--color-elp-pine); transform: translateX(4px); }
+          0%, 12.5% { opacity: 0.45; border-color: var(--color-elp-rule); transform: translateX(0); }
+          37.5%, 100% { opacity: 0.45; border-color: var(--color-elp-rule); transform: translateX(0); }
+        }
+        @keyframes elp-step-2 {
+          50% { opacity: 1; border-color: var(--color-elp-iris); transform: translateX(4px); }
+          0%, 37.5% { opacity: 0.45; border-color: var(--color-elp-rule); transform: translateX(0); }
+          62.5%, 100% { opacity: 0.45; border-color: var(--color-elp-rule); transform: translateX(0); }
+        }
+        @keyframes elp-step-3 {
+          75% { opacity: 1; border-color: var(--color-elp-ochre); transform: translateX(4px); }
+          0%, 62.5% { opacity: 0.45; border-color: var(--color-elp-rule); transform: translateX(0); }
+          87.5%, 100% { opacity: 0.45; border-color: var(--color-elp-rule); transform: translateX(0); }
+        }
+      `}} />
+
       <svg
         viewBox="0 0 300 300"
         className="h-[264px] w-[264px] shrink-0"
@@ -47,22 +79,37 @@ export function LoopDiagram() {
               key={beat.label}
               cx={point.x}
               cy={point.y}
-              r={5}
-              fill="var(--color-elp-paper)"
-              stroke="var(--color-elp-ink)"
-              strokeWidth={1.5}
+              r={6}
+              fill={beat.color}
+              stroke="var(--color-elp-paper)"
+              strokeWidth={2}
             />
           );
         })}
 
-        <motion.g
-          style={{ originX: `${CENTER}px`, originY: `${CENTER}px` }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 9, ease: 'linear', repeat: Infinity }}
+        <g
+          style={{
+            transformOrigin: '150px 150px',
+            animation: 'elp-rotate 9s linear infinite'
+          }}
         >
-          <circle cx={CENTER} cy={CENTER - RADIUS} r={7} fill="var(--color-elp-flame)" />
-          <circle cx={CENTER} cy={CENTER - RADIUS} r={13} fill="var(--color-elp-flame)" opacity={0.16} />
-        </motion.g>
+          {/* Invisible element spanning full viewBox to force group bounding box center to (150, 150) */}
+          <rect x={0} y={0} width={300} height={300} fill="none" pointerEvents="none" />
+          
+          <circle
+            cx={CENTER}
+            cy={CENTER - RADIUS}
+            r={7}
+            style={{ animation: 'elp-dot-color 9s linear infinite' }}
+          />
+          <circle
+            cx={CENTER}
+            cy={CENTER - RADIUS}
+            r={13}
+            opacity={0.16}
+            style={{ animation: 'elp-dot-color 9s linear infinite' }}
+          />
+        </g>
 
         <text
           x={CENTER}
@@ -85,16 +132,28 @@ export function LoopDiagram() {
       </svg>
 
       <ol className="w-full space-y-3">
-        {BEATS.map((beat, index) => (
-          <li key={beat.label} className="flex gap-3 border-l-2 border-elp-rule pl-4">
-            <span className="mt-[3px] font-mono text-[10px] text-elp-flame">{String(index + 1).padStart(2, '0')}</span>
-            <span>
-              <span className="block font-serif text-[17px] text-elp-ink">{beat.label}</span>
-              <span className="block font-sans text-xs text-elp-ink-faint">{beat.detail}</span>
-            </span>
-          </li>
-        ))}
+        {BEATS.map((beat, index) => {
+          return (
+            <li
+              key={beat.label}
+              className="flex gap-3 border-l-2 pl-4 transition-all"
+              style={{
+                animation: `elp-step-${index} 9s linear infinite`,
+                willChange: 'transform, opacity, border-color'
+              }}
+            >
+              <span className="mt-[3px] font-mono text-[10px]" style={{ color: beat.color }}>
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span>
+                <span className="block font-serif text-[17px] text-elp-ink">{beat.label}</span>
+                <span className="block font-sans text-xs text-elp-ink-faint">{beat.detail}</span>
+              </span>
+            </li>
+          );
+        })}
       </ol>
     </div>
   );
 }
+
