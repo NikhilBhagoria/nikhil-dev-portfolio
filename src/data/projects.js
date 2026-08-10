@@ -1,5 +1,16 @@
 export const projects = [
   {
+    id: 12,
+    title: "JS Event Loop Visualizer",
+    description: "An interactive, step-by-step educational simulator that visualizes the JavaScript engine's concurrency model. Step through the Call Stack, Microtask Queue, Macrotask Queue, and console output in real-time to master asynchronous execution.",
+    image: "./event-loop-preview.png",
+    imageAlt: "Interactive JavaScript Event Loop Simulator dashboard featuring call stack, queues, and code highlights",
+    tags: ["React.js", "Tailwind CSS", "Framer Motion", "Data Visualization"],
+    liveUrl: "/event-loop",
+    githubUrl: "https://github.com/NikhilBhagoria/event-loop-visualizer",
+    isUpcoming: false,
+  },
+  {
     id: 1,
     title: "Blogify",
     description: "A secure, serverless full-stack blogging application engineered using React, TypeScript, Hono, and PostgreSQL. Integrates JWT authentication and Zod schema validation across 8+ forms/API routes. Deployed frontend on Vercel and backend on Cloudflare Workers, achieving sub-500ms response times.",

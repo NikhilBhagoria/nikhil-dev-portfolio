@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
 @import "tailwindcss";
+
 
 :root {
   --background: #111318;
@@ -31,6 +33,24 @@
   --color-surface-container-low: #1a1c20;
   --color-surface-container-high: #282a2e;
   --color-surface-container-highest: #333539;
+
+  /* Event Loop Post Scoped Theme */
+  --font-serif: "Newsreader", "Georgia", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-elp-paper: #faf7f2;
+  --color-elp-surface: #ffffff;
+  --color-elp-rule: #e6dfd3;
+  --color-elp-ink: #1c1a17;
+  --color-elp-ink-soft: #4c473f;
+  --color-elp-ink-faint: #8b8478;
+  --color-elp-night: #171512;
+  --color-elp-night-soft: #221f1a;
+  --color-elp-night-rule: #33302a;
+  --color-elp-flame: #c4472a;
+  --color-elp-pine: #1f6f6b;
+  --color-elp-ochre: #a97a12;
+  --color-elp-iris: #4f4a9b;
 }
 
 html {
@@ -123,4 +143,20 @@ body {
 }
 .text-\[\#00D1FF\] {
     color: rgb(0 209 255 / var(--tw-text-opacity, 1));
+}
+
+/* Event Loop Simulator custom utility styles */
+.paper-grain {
+  background-image: radial-gradient(var(--color-elp-ink) 0.5px, transparent 0.5px);
+  background-size: 14px 14px;
+  opacity: 0.045;
+}
+
+.drop-first::first-letter {
+  float: left;
+  font-size: 3.9rem;
+  line-height: 0.82;
+  padding: 0.08em 0.08em 0 0;
+  font-weight: 500;
+  color: var(--color-elp-flame);
 }
