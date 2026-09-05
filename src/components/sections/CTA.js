@@ -1,4 +1,3 @@
-"use client";
 
 import Button from "@/components/ui/Button";
 
@@ -24,7 +23,7 @@ export default function CTA() {
             </h2>
 
             <p className="text-on-surface-variant text-lg mb-12">
-              I'm currently looking for new opportunities and collaborations.
+              I&apos;m currently looking for new opportunities and collaborations.
               Whether you have a question or just want to say hi, my inbox is
               always open.
             </p>
@@ -36,7 +35,7 @@ export default function CTA() {
                 variant="gradient"
                 size="lg"
               >
-                Let's Talk Business
+                Let&apos;s Talk Business
               </Button>
 
               <Button

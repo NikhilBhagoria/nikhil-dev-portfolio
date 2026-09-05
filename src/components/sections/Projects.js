@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { projects } from "@/data/projects";
 import Button from "@/components/ui/Button";
 import { use3DTilt } from "@/hooks/use3DTilt";
@@ -95,7 +97,9 @@ function FeaturedProjectCard({ project }) {
       <div>
         {/* Project Image */}
         <div className="aspect-video relative overflow-hidden bg-[#0b0c13] rounded-t-[1.75rem]">
-          <img
+          <Image
+            fill
+            sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1279px) 33vw, 400px"
             alt={project.imageAlt}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-t-[1.75rem]"
             src={project.image}
@@ -178,7 +182,9 @@ function UpcomingProjectCard({ project }) {
       <div>
         {/* Project Image - Slightly Blurred */}
         <div className="aspect-video relative overflow-hidden bg-[#0b0c13] rounded-t-[1.75rem]">
-          <img
+          <Image
+            fill
+            sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1279px) 50vw, 432px"
             alt={project.imageAlt}
             className="w-full h-full object-cover blur-[1px] opacity-80 group-hover:scale-103 transition-transform duration-500 rounded-t-[1.75rem]"
             src={project.image}

@@ -58,7 +58,7 @@ export function Button({
   if (href && !disabled) {
     const computedTitle = props.title || (typeof children === "string" ? children : undefined);
     return (
-      <Link href={href} className={classes} title={computedTitle} prefetch={false} {...props}>
+      <Link href={href} className={classes} title={computedTitle} {...props}>
         {renderContent()}
       </Link>
     );

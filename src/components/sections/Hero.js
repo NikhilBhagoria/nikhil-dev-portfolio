@@ -225,7 +225,7 @@ ProjectSchema.index({ createdAt: -1 });`,
               ref={terminalRef}
               className="bg-[#0b0f19] rounded-xl border border-outline-variant/10 p-4 font-mono text-[10px] sm:text-xs leading-relaxed text-[#a9b1d6] h-[220px] overflow-y-auto custom-terminal-scrollbar mb-4 select-all shadow-inner"
             >
-              <span className="text-on-surface-variant select-none">// Active Technology: {techSnippets[activeTech].lang}</span>
+              <span className="text-on-surface-variant select-none">{"// Active Technology: "}{techSnippets[activeTech].lang}</span>
               <pre className="mt-2 whitespace-pre-wrap font-mono">
                 {techSnippets[activeTech].code}
               </pre>
@@ -264,19 +264,19 @@ ProjectSchema.index({ createdAt: -1 });`,
                   <span className="absolute font-headline font-black text-xs text-white">100</span>
                 </div>
                 <div>
-                  <p className="font-headline font-bold text-xs sm:text-sm text-white">Lighthouse Standard</p>
-                  <p className="text-[10px] text-[#bbc9cf] mt-0.5">Performance metrics fully verified</p>
+                  <p className="font-headline font-bold text-xs sm:text-sm text-white">Performance Targets</p>
+                  <p className="text-[10px] text-[#bbc9cf] mt-0.5">Illustrative targets, not measured results</p>
                 </div>
               </div>
               <span className="px-2.5 py-0.5 rounded bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] text-[9px] font-bold uppercase tracking-widest sm:self-center">
-                OPTIMIZED
+                TARGETS
               </span>
             </div>
 
             {/* Specs Detail Badges */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
               {[
-                { label: "LCP Speed", val: techSnippets[activeTech].metrics.lcp, color: "text-primary" },
+                { label: "LCP Target", val: techSnippets[activeTech].metrics.lcp, color: "text-primary" },
                 { label: "SEO standard", val: techSnippets[activeTech].metrics.seo, color: "text-[#34d399]" },
                 { label: "Performance", val: techSnippets[activeTech].metrics.performance, color: "text-[#34d399]" },
                 { label: "Security", val: techSnippets[activeTech].metrics.security, color: "text-tertiary" }

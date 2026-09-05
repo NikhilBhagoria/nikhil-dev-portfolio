@@ -1,5 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import { Search, SearchX, ChevronLeft, ChevronRight, LayoutGrid, List } from "lucide-react";
+
 import { useState, useMemo, useRef } from "react";
 import { projects } from "@/data/projects";
 import Button from "@/components/ui/Button";
@@ -94,9 +97,7 @@ export default function ProjectsPage() {
           {/* Search Bar */}
           <div className="mb-4">
             <div className="relative">
-              <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">
-                search
-              </span>
+              <Search aria-hidden="true" className="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg size-[1em]" />
               <input
                 type="text"
                 placeholder="Search projects..."
@@ -117,7 +118,7 @@ export default function ProjectsPage() {
                 className="absolute left-1 z-20 w-8 h-8 rounded-full bg-surface-container-high/90 border border-outline-variant/30 text-on-surface flex items-center justify-center cursor-pointer shadow-md hover:bg-primary hover:text-background transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
                 aria-label="Scroll tags left"
               >
-                <span className="material-symbols-outlined text-sm leading-none">arrow_back_ios_new</span>
+                <ChevronLeft aria-hidden="true" className="text-sm leading-none size-[1em]" />
               </button>
 
               {/* Fade masks for horizontal scrolling indicator */}
@@ -159,7 +160,7 @@ export default function ProjectsPage() {
                 className="absolute right-1 z-20 w-8 h-8 rounded-full bg-surface-container-high/90 border border-outline-variant/30 text-on-surface flex items-center justify-center cursor-pointer shadow-md hover:bg-primary hover:text-background transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
                 aria-label="Scroll tags right"
               >
-                <span className="material-symbols-outlined text-sm leading-none">arrow_forward_ios</span>
+                <ChevronRight aria-hidden="true" className="text-sm leading-none size-[1em]" />
               </button>
             </div>
 
@@ -173,7 +174,7 @@ export default function ProjectsPage() {
                     : "text-on-surface-variant hover:text-on-surface"
                 }`}
               >
-                <span className="material-symbols-outlined text-lg">grid_view</span>
+                <LayoutGrid aria-hidden="true" className="text-lg size-[1em]" />
               </button>
               <button
                 onClick={() => setViewMode("list")}
@@ -183,7 +184,7 @@ export default function ProjectsPage() {
                     : "text-on-surface-variant hover:text-on-surface"
                 }`}
               >
-                <span className="material-symbols-outlined text-lg">view_list</span>
+                <List aria-hidden="true" className="text-lg size-[1em]" />
               </button>
             </div>
           </div>
@@ -222,9 +223,7 @@ export default function ProjectsPage() {
           ) : (
             <div className="text-center py-16">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-surface-container-high mb-4">
-                <span className="material-symbols-outlined text-on-surface-variant text-3xl">
-                  search_off
-                </span>
+                <SearchX aria-hidden="true" className="text-on-surface-variant text-3xl size-[1em]" />
               </div>
               <h3 className="font-headline text-xl font-bold text-on-surface mb-2">
                 No projects found
@@ -256,7 +255,7 @@ export default function ProjectsPage() {
               Interested in working together?
             </h2>
             <p className="text-on-surface-variant text-base mb-6 max-w-2xl mx-auto">
-              I'm open to discussing new projects and opportunities.
+              I&apos;m open to discussing new projects and opportunities.
             </p>
             <div className="flex flex-wrap gap-4 justify-center items-center">
               <Button
@@ -318,7 +317,9 @@ function ProjectCard({ project, index }) {
       <div>
         {/* Project Image */}
         <div className="aspect-video relative overflow-hidden bg-[#0b0c13] rounded-t-[1.75rem]">
-          <img
+          <Image
+            fill
+            sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1279px) 33vw, 400px"
             alt={project.imageAlt}
             className={`w-full h-full object-cover transition-transform duration-500 rounded-t-[1.75rem] ${
               isUpcoming ? "blur-[1px] opacity-80 group-hover:scale-103" : "group-hover:scale-105"
@@ -482,7 +483,9 @@ function ProjectListItem({ project, index }) {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
         {/* Image */}
         <div className="md:col-span-1 aspect-square rounded-xl overflow-hidden bg-[#0b0c13] relative">
-          <img
+          <Image
+            fill
+            sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1279px) 33vw, 400px"
             alt={project.imageAlt}
             className={`w-full h-full object-cover transition-transform duration-500 ${
               isUpcoming ? "blur-[1px] opacity-80 group-hover:scale-103" : "group-hover:scale-105"
