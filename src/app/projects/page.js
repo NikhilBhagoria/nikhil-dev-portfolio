@@ -13,6 +13,7 @@ export default function ProjectsPage() {
   const [selectedTag, setSelectedTag] = useState(null);
   const [viewMode, setViewMode] = useState("grid"); // grid or list
   const tagsRef = useRef(null);
+  const [expanded, setExpanded] = useState(false);
 
   const scrollTags = (direction) => {
     if (tagsRef.current) {
@@ -102,7 +103,7 @@ export default function ProjectsPage() {
                 type="text"
                 placeholder="Search projects..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => { setSearchQuery(e.target.value); setExpanded(false); }}
                 className="w-full pl-11 pr-4 py-2.5 bg-surface-container-low border border-outline-variant/30 rounded-lg text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all backdrop-blur-sm text-sm"
               />
             </div>
@@ -130,7 +131,7 @@ export default function ProjectsPage() {
                 className="flex gap-2 overflow-x-auto pb-2 scrollbar-none scroll-smooth px-8 w-full"
               >
                 <button
-                  onClick={() => setSelectedTag(null)}
+                  onClick={() => { setSelectedTag(null); setExpanded(false); }}
                   className={`px-3.5 py-2 rounded-lg font-label text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
                     selectedTag === null
                       ? "bg-primary text-background shadow-[0_2px_10px_rgba(164,230,255,0.2)] scale-[1.02]"
@@ -142,7 +143,7 @@ export default function ProjectsPage() {
                 {allTags.map((tag) => (
                   <button
                     key={tag}
-                    onClick={() => setSelectedTag(tag)}
+                    onClick={() => { setSelectedTag(tag); setExpanded(false); }}
                     className={`px-3.5 py-2 rounded-lg font-label text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
                       selectedTag === tag
                         ? "bg-secondary text-background shadow-[0_2px_10px_rgba(209,188,255,0.2)] scale-[1.02]"
@@ -198,18 +199,18 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid / List */}
-      <section className="py-10 px-6 bg-background pt-8">
+      <section className="projects-results py-10 px-6 bg-background pt-8" data-expanded={expanded}>
         <div className="max-w-6xl mx-auto">
           {filteredProjects.length > 0 ? (
             <>
               {viewMode === "grid" ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id="project-results" className="project-results-items grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredProjects.map((project, index) => (
                     <ProjectCard key={project.id} project={project} index={index} />
                   ))}
                 </div>
               ) : (
-                <div className="space-y-4">
+                <div id="project-results" className="project-results-items space-y-4">
                   {filteredProjects.map((project, index) => (
                     <ProjectListItem
                       key={project.id}
@@ -217,6 +218,19 @@ export default function ProjectsPage() {
                       index={index}
                     />
                   ))}
+                </div>
+              )}
+              {filteredProjects.length > 3 && (
+                <div className="mt-8 text-center md:hidden">
+                  <button
+                    type="button"
+                    aria-expanded={expanded}
+                    aria-controls="project-results"
+                    onClick={() => setExpanded(value => !value)}
+                    className="min-h-11 rounded-xl border border-primary-container/50 px-6 py-3 text-sm font-semibold text-primary hover:bg-primary-container/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-container"
+                  >
+                    {expanded ? "Show fewer projects" : `Show more projects (${filteredProjects.length - 3})`}
+                  </button>
                 </div>
               )}
             </>
