@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 import { projects } from "@/data/projects";
 import Button from "@/components/ui/Button";
@@ -10,11 +11,12 @@ import { use3DTilt } from "@/hooks/use3DTilt";
  * Enterprise Production-level Projects section.
  */
 export default function Projects() {
+  const [expanded, setExpanded] = useState(false);
   const featuredProjects = projects.filter((project) => !project.isUpcoming);
   const upcomingProjects = projects.filter((project) => project.isUpcoming);
 
   return (
-    <section className="py-24 bg-background">
+    <section className="home-projects py-24 bg-background" data-expanded={expanded}>
       <div className="max-w-7xl mx-auto px-8">
         {/* Header */}
         <div className="text-center mb-20">
@@ -31,7 +33,7 @@ export default function Projects() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div id="home-project-grid" className="home-project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
           {featuredProjects.map((project) => (
             <FeaturedProjectCard key={project.id} project={project} />
           ))}
@@ -39,7 +41,7 @@ export default function Projects() {
 
         {/* Upcoming Projects Pipeline */}
         {upcomingProjects.length > 0 && (
-          <>
+          <div id="home-upcoming-projects" className="home-upcoming-projects">
             <div className="mt-28 pt-16 border-t border-outline-variant/20 text-center mb-16">
               <span className="font-label text-[10px] text-secondary uppercase tracking-[0.2em] block mb-2">
                 In the Pipeline
@@ -58,7 +60,21 @@ export default function Projects() {
                 <UpcomingProjectCard key={project.id} project={project} />
               ))}
             </div>
-          </>
+          </div>
+        )}
+
+        {projects.length > 3 && (
+          <div className="mt-10 text-center md:hidden">
+            <button
+              type="button"
+              aria-expanded={expanded}
+              aria-controls="home-project-grid home-upcoming-projects"
+              onClick={() => setExpanded(value => !value)}
+              className="min-h-11 rounded-xl border border-primary-container/50 px-6 py-3 text-sm font-semibold text-primary hover:bg-primary-container/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-container"
+            >
+              {expanded ? "Show fewer projects" : `Show more projects (${projects.length - 3})`}
+            </button>
+          </div>
         )}
 
         {/* View All Projects Button */}
