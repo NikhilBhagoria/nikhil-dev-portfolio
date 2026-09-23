@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { projects } from "@/data/projects";
 import Button from "@/components/ui/Button";
+import { useMobileView } from "@/hooks/useMobileView";
 import { use3DTilt } from "@/hooks/use3DTilt";
 
 /**
@@ -12,8 +13,11 @@ import { use3DTilt } from "@/hooks/use3DTilt";
  */
 export default function Projects() {
   const [expanded, setExpanded] = useState(false);
+  const isMobile = useMobileView();
   const featuredProjects = projects.filter((project) => !project.isUpcoming);
   const upcomingProjects = projects.filter((project) => project.isUpcoming);
+
+  const visibleProjects = isMobile && !expanded ? featuredProjects.slice(0, 3) : featuredProjects;
 
   return (
     <section className="home-projects py-24 bg-background" data-expanded={expanded}>
@@ -34,13 +38,13 @@ export default function Projects() {
 
         {/* Projects Grid */}
         <div id="home-project-grid" className="home-project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
-          {featuredProjects.map((project) => (
+          {visibleProjects.map((project) => (
             <FeaturedProjectCard key={project.id} project={project} />
           ))}
         </div>
 
         {/* Upcoming Projects Pipeline */}
-        {upcomingProjects.length > 0 && (
+        {(!isMobile || expanded) && upcomingProjects.length > 0 && (
           <div id="home-upcoming-projects" className="home-upcoming-projects">
             <div className="mt-28 pt-16 border-t border-outline-variant/20 text-center mb-16">
               <span className="font-label text-[10px] text-secondary uppercase tracking-[0.2em] block mb-2">
@@ -63,7 +67,7 @@ export default function Projects() {
           </div>
         )}
 
-        {projects.length > 3 && (
+        {isMobile && projects.length > 3 && (
           <div className="mt-10 text-center md:hidden">
             <button
               type="button"
@@ -78,7 +82,7 @@ export default function Projects() {
         )}
 
         {/* View All Projects Button */}
-        <div className="mt-20 text-center">
+        <div className="hidden mt-20 text-center md:block">
           <Button
             href="/projects"
             variant="secondary"
