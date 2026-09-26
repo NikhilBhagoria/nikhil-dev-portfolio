@@ -180,7 +180,7 @@ ProjectSchema.index({ createdAt: -1 });`,
           <div className="absolute inset-0 bg-primary/20 blur-[120px] rounded-full -z-10"></div>
 
           {/* Interactive Window Chrome */}
-          <div className="relative rounded-3xl overflow-hidden glass-card border border-outline-variant/20 shadow-2xl p-6 backdrop-blur-xl transition-all duration-500 hover:border-primary/30">
+          <div className="relative rounded-3xl overflow-hidden bg-[#171c26] border border-outline-variant/20 shadow-2xl p-6 transition-all duration-500 hover:border-primary/30">
             
             {/* Window Header */}
             <div className="flex items-center justify-between border-b border-outline-variant/10 pb-4 mb-4">
@@ -254,7 +254,7 @@ ProjectSchema.index({ createdAt: -1 });`,
             </div>
 
             {/* Google Lighthouse Optimization Scorecard */}
-            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between p-4 bg-[#10b981]/5 rounded-2xl border border-[#10b981]/25 text-center sm:text-left">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between p-4 bg-[#102a22] rounded-2xl border border-[#10b981]/25 text-center sm:text-left">
               <div className="flex flex-col sm:flex-row items-center gap-3">
                 <div className="relative w-12 h-12 flex-shrink-0 flex items-center justify-center">
                   <svg className="w-full h-full transform -rotate-90">
@@ -268,7 +268,7 @@ ProjectSchema.index({ createdAt: -1 });`,
                   <p className="text-[10px] text-[#bbc9cf] mt-0.5">Illustrative targets, not measured results</p>
                 </div>
               </div>
-              <span className="px-2.5 py-0.5 rounded bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] text-[9px] font-bold uppercase tracking-widest sm:self-center">
+              <span className="px-2.5 py-0.5 rounded bg-[#153d30] border border-[#34d399]/50 text-[#a7f3d0] text-[9px] font-bold uppercase tracking-widest sm:self-center">
                 TARGETS
               </span>
             </div>
